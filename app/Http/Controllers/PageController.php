@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Services\UploadImageService;
+use App\Services\EmailService;
 use App\Services\ClientService;
 use App\Services\CertificateService;
 use App\Services\VariationService;
@@ -12,6 +13,7 @@ use App\Models\Certificate;
 use App\Models\CertificateShape;
 use App\Models\CertificateColor;
 use App\Models\CertificateClarity;
+use App\Models\Contact;
 use DataTables;
 use Carbon;
 use App\Exports\CertificatesExport;
@@ -21,16 +23,18 @@ use Illuminate\Support\Facades\Auth;
 
 class PageController extends Controller
 {
-    private $imageService, $clientService, $certificateService, $variationService;
+    private $imageService, $emailService, $clientService, $certificateService, $variationService;
 
     public function __construct (
         UploadImageService $imageService,
+        EmailService $emailService,
         ClientService $clientService,
         CertificateService $certificateService,
         VariationService $variationService
     )
     {
         $this->imageService = $imageService;
+        $this->emailService = $emailService;
         $this->clientService = $clientService;
         $this->certificateService = $certificateService;
         $this->variationService = $variationService;
@@ -38,7 +42,47 @@ class PageController extends Controller
 
     public function index(Request $request)
     {
-        
+        return view('index');
+    }
+    public function about(Request $request)
+    {
+        return view('about');
+    }
+    public function services(Request $request)
+    {
+        return view('services');
+    }
+    public function contact(Request $request)
+    {
+        return view('contact');
+    }
+    public function saveContact(Request $request)
+    {
+        $request->validate([
+            'g-recaptcha-response' => 'required|recaptcha:contact,0.5',
+        ]);
+        $contact = new Contact;
+        $contact->name = $request->name;
+        $contact->phone_no = $request->phone_no;
+        $contact->email_id = $request->email_id;
+        $contact->message = $request->message;
+        $contact->save();
+        $admin_email = env('ADMIN_EMAIL');
+        $subject = 'New Contact Submission';
+        $result = [
+            'name' => $request->name,
+            'email_id' => $request->email_id,
+            'phone_no' => $request->phone_no,
+            'message' => $request->message,
+        ];
+        $this->emailService->sendEmail('emails.contact', $result, $admin_email, $subject);
+        $request->session()->put('message', 'Thank you for your message. It has been sent.');
+        $request->session()->put('alert-type', 'alert-success');
+        return redirect()->back();
+    }
+    public function terms(Request $request)
+    {
+        return view('terms');
     }
     public function clients(Request $request)
     {

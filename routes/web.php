@@ -17,6 +17,12 @@ use App\Http\Controllers\UserController;
 |
 */
 
+Route::get('/', [PageController::class, 'index'])->name('index');
+Route::get('/about-us', [PageController::class, 'about'])->name('about');
+Route::get('/our-services', [PageController::class, 'services'])->name('services');
+Route::get('/contact-us', [PageController::class, 'contact'])->name('contact');
+Route::post('/contact-us', [PageController::class, 'saveContact'])->name('save.contact');
+Route::get('/terms-conditions', [PageController::class, 'terms'])->name('terms');
 Route::get('/login', [AuthController::class, 'getLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('authenticate');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
