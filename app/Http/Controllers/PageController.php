@@ -80,6 +80,34 @@ class PageController extends Controller
         $request->session()->put('alert-type', 'alert-success');
         return redirect()->back();
     }
+    public function viewReport(Request $request)
+    {
+        $certificate = '';
+        $shapes = '';
+        $colors = '';
+        $clarities = '';
+        $summary_no = $request->rno;
+        $certificate = Certificate::where('summary_no', $summary_no)->where('status', 1)->first();
+        if($certificate) {
+            $shapes = $certificate->shapes()->with('variation')->get()->pluck('variation.name')->implode('/');
+            $colors = $certificate->colors()->with('variation')->get()->pluck('variation.name')->implode(',');
+            $clarities = $certificate->clarities()->with('variation')->get()->pluck('variation.name')->implode(',');    
+        }
+        return view('view-report')->with('summary_no', $summary_no)->with('certificate', $certificate)->with('shapes', $shapes)->with('colors', $colors)->with('clarities', $clarities);
+    }
+    public function fetchDetails(Request $request)
+    {
+        $certificate = Certificate::where('summary_no', $request->summary_no)->where('status', 1)->first();
+        $shapes = '';
+        $colors = '';
+        $clarities = '';
+        if($certificate) {
+            $shapes = $certificate->shapes()->with('variation')->get()->pluck('variation.name')->implode('/');
+            $colors = $certificate->colors()->with('variation')->get()->pluck('variation.name')->implode(',');
+            $clarities = $certificate->clarities()->with('variation')->get()->pluck('variation.name')->implode(',');    
+        }
+        return view('search-result')->with('certificate', $certificate)->with('shapes', $shapes)->with('colors', $colors)->with('clarities', $clarities)->render();
+    }
     public function terms(Request $request)
     {
         return view('terms');
@@ -322,8 +350,9 @@ class PageController extends Controller
             $data['image'] = '/certificates/'.$filename;
         }
         $summary_no = $request->summary_no;
+        $qr_img = env('APP_HOME_URL').'view-report.php?rno='.$summary_no;
         $qr_code_path = public_path("assets/qr_code/".$summary_no.".png");
-        $qr_code = \QrCode::format('png')->size(290)->margin(0)->generate($summary_no, $qr_code_path);
+        $qr_code = \QrCode::format('png')->size(290)->margin(0)->generate($qr_img, $qr_code_path);
         $data['qr_code'] = '/qr_code/'.$summary_no.'.png';
         $data['status'] = $request->active;
         $certificate_data = $this->certificateService->create($data);

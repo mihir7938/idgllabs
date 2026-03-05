@@ -24,6 +24,11 @@
             <span class="sr-only">Loading...</span>
         </div>
     </div>
+    <div class="loader">
+        <div class="loader-inner">
+            <img src="{{asset('img/loading.gif')}}" alt="" style="width: 100%;">
+        </div>
+    </div>
     <div class="container-fluid bg-primary px-5 d-none d-lg-block">
         <div class="row gx-0 align-items-center">
             <div class="col-lg-6 text-center text-lg-start mb-lg-0">
@@ -59,7 +64,7 @@
                     <a href="{{route('services')}}" class="nav-item nav-link {{ Route::currentRouteName() == 'services' ? 'active' : '' }}">Service</a>
                     <a href="{{route('contact')}}" class="nav-item nav-link {{ Route::currentRouteName() == 'contact' ? 'active' : '' }}">Contact</a>
                 </div>
-                <a href="" class="btn btn-primary border-secondary rounded-pill py-2 px-4 px-lg-3 mb-3 mb-md-3 mb-lg-0 desktop-block">Verify Report</a>
+                <a href="{{route('view.report')}}" class="btn btn-primary border-secondary rounded-pill py-2 px-4 px-lg-3 mb-3 mb-md-3 mb-lg-0 desktop-block">Verify Report</a>
             </div>
         </nav>
     </div>

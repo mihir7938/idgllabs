@@ -22,6 +22,8 @@ Route::get('/about-us', [PageController::class, 'about'])->name('about');
 Route::get('/our-services', [PageController::class, 'services'])->name('services');
 Route::get('/contact-us', [PageController::class, 'contact'])->name('contact');
 Route::post('/contact-us', [PageController::class, 'saveContact'])->name('save.contact');
+Route::get('/view-report.php', [PageController::class, 'viewReport'])->name('view.report');
+Route::get('/fetch-details', [PageController::class, 'fetchDetails'])->name('fetch.details');
 Route::get('/terms-conditions', [PageController::class, 'terms'])->name('terms');
 Route::get('/login', [AuthController::class, 'getLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('authenticate');
