@@ -29,19 +29,24 @@ class UserMail extends Mailable
      */
     public function build()
     {
-        if ($this->data['attachment']) {
-            if ($this->data['attachment_name']) {
-                return $this->view($this->data['template'])
-                        ->with('result', $this->data['result'])
-                        ->attach($this->data['attachment'],[
-                            'as' => $this->data['attachment_name'],
-                        ]);
+        $mail = $this->from(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'))
+                 ->subject($this->data['subject'])
+                 ->view($this->data['template'])
+                 ->with([
+                     'result' => $this->data['result']
+                 ]);
+
+        if (!empty($this->data['attachment'])) {
+    
+            if (!empty($this->data['attachment_name'])) {
+                $mail->attach($this->data['attachment'], [
+                    'as' => $this->data['attachment_name']
+                ]);
             } else {
-                return $this->view($this->data['template'])
-                        ->with('result', $this->data['result'])
-                        ->attach($this->data['attachment']);
+                $mail->attach($this->data['attachment']);
             }
+    
         }
-        return $this->view($this->data['template'])->subject($this->data['subject'])->with('result', $this->data['result']);
+        return $mail;
     }
 }
