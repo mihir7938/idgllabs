@@ -117,11 +117,18 @@
             font-size: 16px;
             line-height: normal;
         }
+        .print-container {
+            padding: 10px;
+        }
         .print-container img {
-            width: 90%;
+            width: 70%;
         }
         .print-body {
             font-size: 0.7rem;
+            margin-top: 10px;
+        }
+        .print-body img {
+            width: 100%;
         }
         .print-body label {
             font-size: 0.7rem;
@@ -131,6 +138,12 @@
         }
         .print-body .right {
             width: calc(100% - 104px);
+        }
+        .print-body .w-20 {
+            width: 25%;
+        }
+        .print-body .w-80 {
+            width: 75%;
         }
     }
 </style>
