@@ -90,6 +90,9 @@
         font-weight: bold;
         color: #003a66;
     }
+    .print-body img {
+        width: 100%;
+    }
     .print-body label {
         font-weight: bold;
         font-size: 0.8rem;
@@ -101,15 +104,15 @@
         margin: 0;
     }
     .print-body .left {
-        width: 26%;
+        width: 116px;
     }
     .print-body .center {
-        margin: 0 2%;
+        margin: 0 10px;
     }
     .print-body .right {
-        width: 70%;
+        width: calc(100% - 140px);
     }
-    @media (max-width: 480px) {
+    @media (max-width: 580px) {
         .print-header h4 {
             font-size: 16px;
             line-height: normal;
@@ -122,6 +125,12 @@
         }
         .print-body label {
             font-size: 0.7rem;
+        }
+        .print-body .left {
+            width: 80px;
+        }
+        .print-body .right {
+            width: calc(100% - 104px);
         }
     }
 </style>

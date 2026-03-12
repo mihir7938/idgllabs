@@ -50,7 +50,7 @@
                                             <select id="company" name="company" class="form-control select2">
                                                 <option value="">Select Company</option>
                                                 @foreach($companies as $company)
-                                                    <option value="{{$company->id}}">{{$company->company_name}}</option>
+                                                    <option value="{{$company->id}}" data-company="{{$company->company_name}}" data-client="{{$company->client_name}}">{{$company->company_name}} - {{$company->client_name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -141,7 +141,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="comment">Comments</label>
-                                            <textarea class="form-control" id="comment" name="comment" rows="4" cols="50" placeholder="Comments"></textarea>
+                                            <textarea class="form-control" id="comment" name="comment" rows="4" cols="50" placeholder="Comments">grading & identification of origin as mounting permits</textarea>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -193,6 +193,19 @@
         $('.select2').select2({
             width: 'resolve'
         });
+        $('#company').select2({
+            templateResult: formatCompany,
+            templateSelection: formatCompany
+        });
+        function formatCompany(state) {
+            if (!state.id) return state.text;
+            var company = $(state.element).data('company');
+            var client = $(state.element).data('client');
+            return $(
+                '<span>' + company + 
+                ' - <span style="font-style:italic;font-size:12px;">' + client + '</span></span>'
+            );
+        }
         bsCustomFileInput.init();
         function generateSummary() {
             var selectedValue = $('#certificate_date').val();

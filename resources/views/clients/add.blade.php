@@ -47,7 +47,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="client_name">Client Name*</label>
-                                            <input type="text" class="form-control" id="client_name" name="client_name" placeholder="Client Name">
+                                            <input type="text" class="form-control" id="client_name" name="client_name" placeholder="Client Name" value="To whom it may concern">
                                         </div>
                                     </div>
                                     <div class="col-md-6">

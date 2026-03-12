@@ -25,7 +25,7 @@
                 </div>
             </div>
             <div class="d-flex flex-wrap mb-2">
-                <div class="w-100">
+                <div class="w-80">
                     <div class="d-flex">
                         <div class="left"><label>SHAPE/CUT</label></div><span class="center">:</span><div class="right">{{ $shapes }}</div>
                     </div>
@@ -41,6 +41,11 @@
                     <div class="d-flex">
                         <div class="left"><label>COMMENTS</label></div><span class="center">:</span><div class="right">{!! html_entity_decode($certificate->comment) !!}</div>
                     </div>
+                </div>
+                <div class="w-20 mt-2 ps-2">
+                     @if($certificate->image)
+                        <img src="{{asset('assets/'.$certificate->image)}}" alt="Certificate" />
+                    @endif
                 </div>
             </div>
         </div>

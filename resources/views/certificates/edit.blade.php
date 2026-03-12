@@ -50,7 +50,7 @@
                                             <label for="company">Company Name*</label>
                                             <select id="company" name="company" class="form-control select2">
                                                 @foreach($companies as $company)
-                                                    <option value="{{$company->id}}" @if($certificate->client_id == $company->id) selected @endif>{{$company->company_name}}</option>
+                                                    <option value="{{$company->id}}" data-company="{{$company->company_name}}" data-client="{{$company->client_name}}" @if($certificate->client_id == $company->id) selected @endif>{{$company->company_name}}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -219,6 +219,19 @@
         $('.select2').select2({
             width: 'resolve'
         });
+        $('#company').select2({
+            templateResult: formatCompany,
+            templateSelection: formatCompany
+        });
+        function formatCompany(state) {
+            if (!state.id) return state.text;
+            var company = $(state.element).data('company');
+            var client = $(state.element).data('client');
+            return $(
+                '<span>' + company + 
+                ' - <span style="font-style:italic;font-size:12px;">' + client + '</span></span>'
+            );
+        }
         $(document).on('click', '[data-toggle="lightbox"]', function(event) {
             event.preventDefault();
             $(this).ekkoLightbox({
