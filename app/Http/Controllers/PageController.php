@@ -358,21 +358,24 @@ class PageController extends Controller
         $certificate_data = $this->certificateService->create($data);
         $certificate_id = $certificate_data->id;
         if($request->has('shape_id')){
-            foreach($request->shape_id as $shape) {
+            $shapeOrder = explode(',', $request->shape_order);
+            foreach($shapeOrder as $shape) {
                 $shape_data['certificate_id'] = $certificate_id;
                 $shape_data['shape_id'] = $shape;
                 CertificateShape::create($shape_data);
             }
         }
         if($request->has('color_id')){
-            foreach($request->color_id as $color) {
+            $colorOrder = explode(',', $request->color_order);
+            foreach($colorOrder as $color) {
                 $color_data['certificate_id'] = $certificate_id;
                 $color_data['color_id'] = $color;
                 CertificateColor::create($color_data);
             }
         }
         if($request->has('clarity_id')){
-            foreach($request->clarity_id as $clarity) {
+            $clarityOrder = explode(',', $request->clarity_order);
+            foreach($clarityOrder as $clarity) {
                 $clarity_data['certificate_id'] = $certificate_id;
                 $clarity_data['clarity_id'] = $clarity;
                 CertificateClarity::create($clarity_data);
@@ -438,7 +441,8 @@ class PageController extends Controller
             $this->certificateService->update($certificate, $data);
             CertificateShape::where('certificate_id', $certificate->id)->delete();
             if($request->has('shape_id')){
-                foreach($request->shape_id as $shape) {
+                $shapeOrder = explode(',', $request->shape_order);
+                foreach($shapeOrder as $shape) {
                     $shape_data['certificate_id'] = $certificate->id;
                     $shape_data['shape_id'] = $shape;
                     CertificateShape::create($shape_data);
@@ -446,7 +450,8 @@ class PageController extends Controller
             }
             CertificateColor::where('certificate_id', $certificate->id)->delete();
             if($request->has('color_id')){
-                foreach($request->color_id as $color) {
+                $colorOrder = explode(',', $request->color_order);
+                foreach($colorOrder as $color) {
                     $color_data['certificate_id'] = $certificate->id;
                     $color_data['color_id'] = $color;
                     CertificateColor::create($color_data);
@@ -454,7 +459,8 @@ class PageController extends Controller
             }
             CertificateClarity::where('certificate_id', $certificate->id)->delete();
             if($request->has('clarity_id')){
-                foreach($request->clarity_id as $clarity) {
+                $clarityOrder = explode(',', $request->clarity_order);
+                foreach($clarityOrder as $clarity) {
                     $clarity_data['certificate_id'] = $certificate->id;
                     $clarity_data['clarity_id'] = $clarity;
                     CertificateClarity::create($clarity_data);

@@ -66,6 +66,7 @@
                                                     <option value="{{$shape->id}}">{{$shape->name}}</option>
                                                 @endforeach
                                             </select>
+                                            <input type="hidden" name="shape_order" id="shape_order">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -77,6 +78,7 @@
                                                     <option value="{{$color->id}}">{{$color->name}}</option>
                                                 @endforeach
                                             </select>
+                                            <input type="hidden" name="color_order" id="color_order">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -88,6 +90,7 @@
                                                     <option value="{{$clarity->id}}">{{$clarity->name}}</option>
                                                 @endforeach
                                             </select>
+                                            <input type="hidden" name="clarity_order" id="clarity_order">
                                         </div>
                                     </div>
                                 </div>
@@ -193,6 +196,72 @@
         $('.select2').select2({
             width: 'resolve'
         });
+        let selectedShapeOrder = [];
+        $('#shape_id').on('select2:select', function (e) {
+            let value = e.params.data.id;
+            if (!selectedShapeOrder.includes(value)) {
+                selectedShapeOrder.push(value);
+            }
+            updateShapeOrder();
+        });
+        $('#shape_id').on('select2:unselect', function (e) {
+            let value = e.params.data.id;
+            selectedShapeOrder = selectedShapeOrder.filter(v => v !== value);
+            updateShapeOrder();
+        });
+        function updateShapeOrder() {
+            let select = $('#shape_id');
+            selectedShapeOrder.forEach(function(val){
+                let option = select.find('option[value="'+val+'"]');
+                select.append(option);
+            });
+            select.trigger('change.select2');
+            $('#shape_order').val(selectedShapeOrder.join(','));
+        }
+        let selectedColorOrder = [];
+        $('#color_id').on('select2:select', function (e) {
+            let value = e.params.data.id;
+            if (!selectedColorOrder.includes(value)) {
+                selectedColorOrder.push(value);
+            }
+            updateColorOrder();
+        });
+        $('#color_id').on('select2:unselect', function (e) {
+            let value = e.params.data.id;
+            selectedColorOrder = selectedColorOrder.filter(v => v !== value);
+            updateColorOrder();
+        });
+        function updateColorOrder() {
+            let select = $('#color_id');
+            selectedColorOrder.forEach(function(val){
+                let option = select.find('option[value="'+val+'"]');
+                select.append(option);
+            });
+            select.trigger('change.select2');
+            $('#color_order').val(selectedColorOrder.join(','));
+        }
+        let selectedClarityOrder = [];
+        $('#clarity_id').on('select2:select', function (e) {
+            let value = e.params.data.id;
+            if (!selectedClarityOrder.includes(value)) {
+                selectedClarityOrder.push(value);
+            }
+            updateClarityOrder();
+        });
+        $('#clarity_id').on('select2:unselect', function (e) {
+            let value = e.params.data.id;
+            selectedClarityOrder = selectedClarityOrder.filter(v => v !== value);
+            updateClarityOrder();
+        });
+        function updateClarityOrder() {
+            let select = $('#clarity_id');
+            selectedClarityOrder.forEach(function(val){
+                let option = select.find('option[value="'+val+'"]');
+                select.append(option);
+            });
+            select.trigger('change.select2');
+            $('#clarity_order').val(selectedClarityOrder.join(','));
+        }
         $('#company').select2({
             templateResult: formatCompany,
             templateSelection: formatCompany

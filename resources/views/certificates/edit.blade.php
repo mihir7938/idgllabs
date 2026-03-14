@@ -83,32 +83,75 @@
                                         <div class="form-group">
                                             <label for="shape_id">Shape/Cut</label>
                                             <select id="shape_id" name="shape_id[]" class="form-control select2" multiple="multiple" data-placeholder="Select Shape/Cut">
+                                                @foreach($selectedShapes as $sid)
+                                                    @php
+                                                        $shape = $shapes->firstWhere('id', $sid);
+                                                    @endphp
+                                                    @if($shape)
+                                                        <option value="{{ $shape->id }}" selected>
+                                                            {{ $shape->name }}
+                                                        </option>
+                                                    @endif
+                                                @endforeach
                                                 @foreach($shapes as $shape)
-                                                    <option value="{{$shape->id}}" {{ in_array($shape->id, $selectedShapes) ? 'selected' : '' }}>{{$shape->name}}</option>
+                                                    @if(!in_array($shape->id, $selectedShapes))
+                                                        <option value="{{ $shape->id }}">
+                                                            {{ $shape->name }}
+                                                        </option>
+                                                    @endif
                                                 @endforeach
                                             </select>
+                                            <input type="hidden" name="shape_order" id="shape_order" value="{{ implode(',', $selectedShapes) }}">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="color_id">Color</label>
                                             <select id="color_id" name="color_id[]" class="form-control select2" multiple="multiple" data-placeholder="Select Color">
-                                                <option value="">Select Color</option>
+                                                @foreach($selectedColors as $sid)
+                                                    @php
+                                                        $color = $colors->firstWhere('id', $sid);
+                                                    @endphp
+                                                    @if($color)
+                                                        <option value="{{ $color->id }}" selected>
+                                                            {{ $color->name }}
+                                                        </option>
+                                                    @endif
+                                                @endforeach
                                                 @foreach($colors as $color)
-                                                    <option value="{{$color->id}}" {{ in_array($color->id, $selectedColors) ? 'selected' : '' }}>{{$color->name}}</option>
+                                                    @if(!in_array($color->id, $selectedColors))
+                                                        <option value="{{ $color->id }}">
+                                                            {{ $color->name }}
+                                                        </option>
+                                                    @endif
                                                 @endforeach
                                             </select>
+                                            <input type="hidden" name="color_order" id="color_order" value="{{ implode(',', $selectedColors) }}">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="clarity_id">Clarity</label>
                                             <select id="clarity_id" name="clarity_id[]" class="form-control select2" multiple="multiple" data-placeholder="Select Clarity">
-                                                <option value="">Select Clarity</option>
+                                                @foreach($selectedClarities as $sid)
+                                                    @php
+                                                        $clarity = $clarities->firstWhere('id', $sid);
+                                                    @endphp
+                                                    @if($clarity)
+                                                        <option value="{{ $clarity->id }}" selected>
+                                                            {{ $clarity->name }}
+                                                        </option>
+                                                    @endif
+                                                @endforeach
                                                 @foreach($clarities as $clarity)
-                                                    <option value="{{$clarity->id}}" {{ in_array($clarity->id, $selectedClarities) ? 'selected' : '' }}>{{$clarity->name}}</option>
+                                                    @if(!in_array($clarity->id, $selectedClarities))
+                                                        <option value="{{ $clarity->id }}">
+                                                            {{ $clarity->name }}
+                                                        </option>
+                                                    @endif
                                                 @endforeach
                                             </select>
+                                            <input type="hidden" name="clarity_order" id="clarity_order" value="{{ implode(',', $selectedClarities) }}">
                                         </div>
                                     </div>
                                 </div>
@@ -219,6 +262,72 @@
         $('.select2').select2({
             width: 'resolve'
         });
+        let selectedShapeOrder = $('#shape_order').val() ? $('#shape_order').val().split(',') : [];
+        $('#shape_id').on('select2:select', function (e) {
+            let value = e.params.data.id;
+            if (!selectedShapeOrder.includes(value)) {
+                selectedShapeOrder.push(value);
+            }
+            updateShapeOrder();
+        });
+        $('#shape_id').on('select2:unselect', function (e) {
+            let value = e.params.data.id;
+            selectedShapeOrder = selectedShapeOrder.filter(v => v !== value);
+            updateShapeOrder();
+        });
+        function updateShapeOrder() {
+            let select = $('#shape_id');
+            selectedShapeOrder.forEach(function(val){
+                let option = select.find('option[value="'+val+'"]');
+                select.append(option);
+            });
+            select.trigger('change.select2');
+            $('#shape_order').val(selectedShapeOrder.join(','));
+        }
+        let selectedColorOrder = $('#color_order').val() ? $('#color_order').val().split(',') : [];
+        $('#color_id').on('select2:select', function (e) {
+            let value = e.params.data.id;
+            if (!selectedColorOrder.includes(value)) {
+                selectedColorOrder.push(value);
+            }
+            updateColorOrder();
+        });
+        $('#color_id').on('select2:unselect', function (e) {
+            let value = e.params.data.id;
+            selectedColorOrder = selectedColorOrder.filter(v => v !== value);
+            updateColorOrder();
+        });
+        function updateColorOrder() {
+            let select = $('#color_id');
+            selectedColorOrder.forEach(function(val){
+                let option = select.find('option[value="'+val+'"]');
+                select.append(option);
+            });
+            select.trigger('change.select2');
+            $('#color_order').val(selectedColorOrder.join(','));
+        }
+        let selectedClarityOrder = $('#clarity_order').val() ? $('#clarity_order').val().split(',') : [];
+        $('#clarity_id').on('select2:select', function (e) {
+            let value = e.params.data.id;
+            if (!selectedClarityOrder.includes(value)) {
+                selectedClarityOrder.push(value);
+            }
+            updateClarityOrder();
+        });
+        $('#clarity_id').on('select2:unselect', function (e) {
+            let value = e.params.data.id;
+            selectedClarityOrder = selectedClarityOrder.filter(v => v !== value);
+            updateClarityOrder();
+        });
+        function updateClarityOrder() {
+            let select = $('#clarity_id');
+            selectedClarityOrder.forEach(function(val){
+                let option = select.find('option[value="'+val+'"]');
+                select.append(option);
+            });
+            select.trigger('change.select2');
+            $('#clarity_order').val(selectedClarityOrder.join(','));
+        }
         $('#company').select2({
             templateResult: formatCompany,
             templateSelection: formatCompany
