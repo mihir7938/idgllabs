@@ -104,7 +104,7 @@
                                 <table class="table table-bordered" id="dataTableCertificate" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th width="110">Action</th>
+                                            <th width="140">Action</th>
                                             <th>Summary No.</th>
                                             <th>Date</th>
                                             <th>Company</th>

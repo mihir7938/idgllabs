@@ -242,6 +242,9 @@ class PageController extends Controller
                             </a>
                             <a href="'.asset('assets/'.$row->qr_code).'" class="btn btn-outline-danger btn-circle" download>
                                 <i class="fas fa-download"></i>
+                            </a>
+                            <a href="'.route('certificates.duplicate',$row->id).'" class="btn btn-outline-warning btn-circle">
+                                <i class="fa fa-copy"></i>
                             </a></div>';
                     return $btn;
                 })
@@ -448,7 +451,7 @@ class PageController extends Controller
             $data['identification'] = $request->identification;
             if($request->has('image')){
                 $filepath = public_path('assets/' . $certificate->image);
-                $this->imageService->deleteFile($filepath);
+                //$this->imageService->deleteFile($filepath);
                 $filename = $this->imageService->uploadFile($request->image, "assets/certificates");
                 $data['image'] = '/certificates/'.$filename;
             }
@@ -489,5 +492,45 @@ class PageController extends Controller
             $request->session()->put('alert-type', 'alert-warning');
             return redirect()->route('certificates');
         }
+    }
+    public function duplicateCertificate(Request $request, $id)
+    {
+        $certificate = Certificate::findOrFail($id);
+        $newCertificate = $certificate->replicate();
+        date_default_timezone_set('Asia/Kolkata');
+        $branch = '1';
+        $summary_no = date('dmyHis').$branch;
+        $today = date('Y-m-d');
+        $newCertificate->summary_no = $summary_no;
+        $newCertificate->certificate_date = $today;
+        $qr_img = env('APP_HOME_URL').'view-report.php?rno='.$summary_no;
+        $qr_code_path = public_path("assets/qr_code/".$summary_no.".png");
+        $qr_code = \QrCode::format('png')->size(290)->margin(0)->generate($qr_img, $qr_code_path);
+        $newCertificate->qr_code = '/qr_code/'.$summary_no.'.png';
+        $newCertificate->created_at = now();
+        $newCertificate->updated_at = now();
+        $newCertificate->save();
+        $newId = $newCertificate->id;
+        foreach ($certificate->shapes as $shape) {
+            CertificateShape::create([
+                'certificate_id' => $newId,
+                'shape_id' => $shape->shape_id,
+            ]);
+        }
+        foreach ($certificate->colors as $color) {
+            CertificateColor::create([
+                'certificate_id' => $newId,
+                'color_id' => $color->color_id,
+            ]);
+        }
+        foreach ($certificate->clarities as $clarity) {
+            CertificateClarity::create([
+                'certificate_id' => $newId,
+                'clarity_id' => $clarity->clarity_id,
+            ]);
+        }
+        $request->session()->put('message', 'Certificate duplicated successfully! New Summary No - ' . $summary_no);
+        $request->session()->put('alert-type', 'alert-success');
+        return redirect()->back();
     }
 }

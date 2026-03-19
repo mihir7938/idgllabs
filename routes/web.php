@@ -50,6 +50,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/certificates/edit/{id}', [PageController::class, 'editCertificate'])->name('certificates.edit');
     Route::post('/certificates/update', [PageController::class, 'updateCertificate'])->name('certificates.update.save');
     Route::get('/certificates/print', [PageController::class, 'printCertificate'])->name('certificates.print');
+    Route::get('certificates/duplicate/{id}', [PageController::class, 'duplicateCertificate'])
+    ->name('certificates.duplicate');
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
