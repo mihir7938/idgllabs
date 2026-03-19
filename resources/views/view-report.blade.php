@@ -90,6 +90,9 @@
         font-weight: bold;
         color: #003a66;
     }
+    .print-body span {
+        font-size: 0.8rem !important;
+    }
     .print-body img {
         width: 100%;
     }
@@ -126,6 +129,9 @@
         .print-body {
             font-size: 0.7rem;
             margin-top: 10px;
+        }
+        .print-body span {
+            font-size: 0.7rem !important;
         }
         .print-body img {
             width: 100%;

@@ -6,7 +6,7 @@
     <title>Print - {{ $certificate->id }}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,600,700&display=fallback">
     <style>
         @media print {
             .no-print { display: none !important; }
@@ -22,7 +22,7 @@
                 page-break-inside: avoid !important;
             }
             .print-header img {
-                width: 45px !important;
+                width: 30px !important;
             }
             .print-header .left {
                 width: 60px !important;
@@ -34,7 +34,7 @@
                 font-size: 16px !important;
             }
             .print-body {
-                font-size: 9px !important;
+                font-size: 8px !important;
                 line-height: 1.3 !important;
             }
             .print-body .qr_code {
@@ -51,13 +51,21 @@
                 width: calc(100% - 58px) !important;
             }
             .print-body .left {
-                width: 58px !important;
+                width: 62px !important;
             }
             .print-body .center {
                 margin: 0 2px !important;
             }
             .print-body .right {
-                width: calc(100% - 65px) !important;
+                width: calc(100% - 69px) !important;
+            }
+            .small {
+                font-size: 7px !important;
+            }
+        }
+        @media screen {
+            .print-body span {
+                font-size: 14px !important;
             }
         }
         .print-container {
@@ -75,7 +83,7 @@
             text-align: center;
         }
         .print-header img {
-            width: 90px;
+            width: 70px;
         }
         .print-header .left {
             width: 120px;
@@ -126,7 +134,7 @@
             width: calc(100% - 115px);
         }
         .print-body label {
-            font-weight: bold;
+            font-weight: 600;
             text-transform: uppercase;
         }
         .print-body .left {
@@ -139,7 +147,7 @@
             width: calc(100% - 120px);
         }
         .print-body .desc {
-            min-height: 35px;
+            min-height: 32px;
         }
     </style>
 </head>
@@ -173,9 +181,11 @@
                     </div>
                 </div>
                 <div class="block desc">
-                    <div class="d-flex">
-                        <div class="left"><label>DESCRIPTION</label></div><span class="center">:</span><div class="right">{!! html_entity_decode($certificate->description) !!}</div>
-                    </div>
+                    @if($certificate->description)
+                        <div class="d-flex">
+                            <div class="left"><label>DESCRIPTION</label></div><span class="center">:</span><div class="right">{!! html_entity_decode($certificate->description) !!}</div>
+                        </div>
+                    @endif
                 </div>
                 <div class="block">
                     <div class="bottom">
@@ -186,7 +196,7 @@
                         @endif
                         @if($certificate->weight)
                             <div class="d-flex">
-                                <div class="left"><label>TOTAL EST WT</label></div><span class="center">:</span><div class="right">{{ $certificate->weight }}</div>
+                                <div class="left"><label>TOTAL EST WT</label></div><span class="center">:</span><div class="right">{{ $certificate->weight }} carats</div>
                             </div>
                         @endif
                         @if($colors)
@@ -199,9 +209,16 @@
                                 <div class="left"><label>CLARITY</label></div><span class="center">:</span><div class="right"><strong>{{ $clarities }}</strong></div>
                             </div>
                         @endif
-                        <div class="d-flex">
-                            <div class="left"><label>COMMENTS</label></div><span class="center">:</span><div class="right small">{!! html_entity_decode($certificate->comment) !!}</div>
-                        </div>
+                        @if($certificate->identification)
+                            <div class="d-flex">
+                                <div class="left"><label>Identification</label></div><span class="center">:</span><div class="right">{!! html_entity_decode($certificate->identification) !!}</div>
+                            </div>
+                        @endif
+                        @if($certificate->comment)
+                            <div class="d-flex">
+                                <div class="left"><label>COMMENTS</label></div><span class="center">:</span><div class="right small">{!! html_entity_decode($certificate->comment) !!}</div>
+                            </div>
+                        @endif
                     </div>
                     <div class="image">
                         @if($certificate->image)

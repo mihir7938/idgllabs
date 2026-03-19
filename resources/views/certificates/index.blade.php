@@ -104,7 +104,7 @@
                                 <table class="table table-bordered" id="dataTableCertificate" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th width="70">Action</th>
+                                            <th width="110">Action</th>
                                             <th>Summary No.</th>
                                             <th>Date</th>
                                             <th>Company</th>
@@ -115,6 +115,13 @@
                                             <th>Status</th>
                                         </tr>
                                     </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th colspan="5" style="text-align: right;">Total :</th>
+                                            <th id="footer_total_weight"></th>
+                                            <th colspan="3"></th>
+                                        </tr>
+                                    </tfoot>
                                 </table> 
                             </div>
                         </div>
@@ -162,6 +169,10 @@
                 },
                 complete: function() {
                     $('.loader').hide();
+                },
+                dataSrc: function(json){
+                    $('#footer_total_weight').html(parseFloat(parseFloat(json.total_weight).toFixed(3)));
+                    return json.data;
                 }
            },
            dom: '<"row"<"col-md-6 d-flex align-items-center"lB><"col-md-6 text-end"f>>rtip',

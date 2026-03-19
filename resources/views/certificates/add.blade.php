@@ -101,16 +101,26 @@
                                             <input type="text" class="form-control" id="weight" name="weight" placeholder="Total EST WT">
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="refractive_index">Refractive Index</label>
-                                            <input type="text" class="form-control" id="refractive_index" name="refractive_index" placeholder="Refractive Index">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="specific_gravity">Specific Gravity</label>
-                                            <input type="text" class="form-control" id="specific_gravity" name="specific_gravity" placeholder="Specific Gravity">
+                                    <div class="col-md-8">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="total_weight">Total Weight</label>
+                                                    <input type="text" class="form-control" id="total_weight" name="total_weight" placeholder="Total Weight">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="refractive_index">Refractive Index</label>
+                                                    <input type="text" class="form-control" id="refractive_index" name="refractive_index" placeholder="Refractive Index">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="specific_gravity">Specific Gravity</label>
+                                                    <input type="text" class="form-control" id="specific_gravity" name="specific_gravity" placeholder="Specific Gravity">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -135,19 +145,19 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="description">Description</label>
                                             <textarea class="form-control" id="description" name="description" rows="4" cols="50" placeholder="Description"></textarea>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="comment">Comments</label>
-                                            <textarea class="form-control" id="comment" name="comment" rows="4" cols="50" placeholder="Comments">grading & identification of origin as mounting permits</textarea>
+                                            <textarea class="form-control" id="comment" name="comment" rows="4" cols="50" placeholder="Comments"><p>grading & identification of origin as mounting permits</p></textarea>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="identification">Identification</label>
                                             <textarea class="form-control" id="identification" name="identification" rows="4" cols="50" placeholder="Identification"></textarea>
@@ -191,11 +201,57 @@
     </div>
 @endsection
 @section('footer')
+<link rel="stylesheet" href="{{asset('adminlte/css/summernote-bs4.min.css')}}">
+<style>
+    .note-editable {
+        font-family: "Source Sans Pro", Arial, sans-serif !important;
+        font-size: 9px !important;
+        zoom: 1.3;
+        color: #212529 !important;
+    }
+</style>
+<script src="{{asset('adminlte/js/summernote-bs4.min.js')}}"></script>
 <script>
     $(function () {
         $('.select2').select2({
             width: 'resolve'
         });
+        var summernoteConfig = {
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'italic', 'underline', 'clear']],
+                ['fontname', ['fontname']],
+                ['fontsize', ['fontsize']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['insert', ['link', 'picture']],
+                ['view', ['fullscreen', 'codeview']]
+            ],
+            fontSizes: [
+                '8', '9', '10', '11', '12', '14', '16', '18', '20'
+            ],
+            fontNames: [
+                'Source Sans Pro',
+                'Arial',
+                'Verdana',
+                'Times New Roman',
+                'Roboto',
+                'Poppins'
+            ],
+            fontNamesIgnoreCheck: ['Source Sans Pro','Roboto','Poppins'],
+            callbacks: {
+                onInit: function () {
+                    $('.note-editable').css({
+                        'font-family': '"Source Sans Pro", Arial, sans-serif',
+                        'font-size': '9px',
+                        'color': '#212529'
+                    });
+                }
+            }
+        };
+        $('#description').summernote(summernoteConfig);
+        $('#comment').summernote(summernoteConfig);
+        $('#identification').summernote(summernoteConfig);
         let selectedShapeOrder = [];
         $('#shape_id').on('select2:select', function (e) {
             let value = e.params.data.id;
@@ -287,7 +343,7 @@
             var hh   = String(now.getHours()).padStart(2, '0');
             var min  = String(now.getMinutes()).padStart(2, '0');
             var ss   = String(now.getSeconds()).padStart(2, '0');
-            var branch = '001';
+            var branch = '1';
             var summaryNo = dd + mm + yy + hh + min + ss + branch;
             $('#summary_no').val(summaryNo);
         }
@@ -323,6 +379,9 @@
                 },
             });
         });
+        $('#weight').on('input', function () {
+            $('#total_weight').val($(this).val());
+        });
         $('#add-certificates-form').validate({
             rules:{
                 certificate_date: {
@@ -336,6 +395,11 @@
                 },
                 weight: {
                     required: true
+                },
+                total_weight: {
+                    required: true,
+                    number: true,
+                    min: 0
                 },
                 image: {
                     extension: "png|jpg|jpeg",
@@ -354,6 +418,9 @@
                 },
                 weight: {
                     required: "Please enter total est weight."
+                },
+                total_weight: {
+                    required: "Please enter total weight."
                 },
                 image: {
                     extension: "Please select valid image.",

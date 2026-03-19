@@ -27,6 +27,7 @@ class Certificate extends Model
         'address',
         'pdf',
         'weight',
+        'total_weight',
         'refractive_index',
         'specific_gravity',
         'hardness',

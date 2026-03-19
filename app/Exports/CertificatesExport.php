@@ -8,10 +8,12 @@ use Maatwebsite\Excel\Concerns\WithHeadings;
 class CertificatesExport implements FromGenerator, WithHeadings
 {
     protected $query;
+    protected $totalWeight;
 
     public function __construct($query)
     {
         $this->query = $query;
+        $this->totalWeight = (clone $query)->sum('total_weight');
     }
 
     public function headings(): array
@@ -42,5 +44,7 @@ class CertificatesExport implements FromGenerator, WithHeadings
                 $row->status == 1 ? 'Active' : 'Inactive',
             ];
         }
+        yield ['', '', '', '', '', '', '', ''];
+        yield ['', '', '', 'Total',(float)$this->totalWeight,'', '', ''];
     }
 }

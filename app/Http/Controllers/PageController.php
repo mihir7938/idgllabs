@@ -89,9 +89,9 @@ class PageController extends Controller
         $summary_no = $request->rno;
         $certificate = Certificate::where('summary_no', $summary_no)->where('status', 1)->first();
         if($certificate) {
-            $shapes = $certificate->shapes()->with('variation')->get()->pluck('variation.name')->implode('/');
-            $colors = $certificate->colors()->with('variation')->get()->pluck('variation.name')->implode(',');
-            $clarities = $certificate->clarities()->with('variation')->get()->pluck('variation.name')->implode(',');    
+            $shapes = $certificate->shapes()->with('variation')->get()->pluck('variation.name')->implode(' / ');
+            $colors = $certificate->colors()->with('variation')->get()->pluck('variation.name')->implode(' / ');
+            $clarities = $certificate->clarities()->with('variation')->get()->pluck('variation.name')->implode(' / ');    
         }
         return view('view-report')->with('summary_no', $summary_no)->with('certificate', $certificate)->with('shapes', $shapes)->with('colors', $colors)->with('clarities', $clarities);
     }
@@ -102,9 +102,9 @@ class PageController extends Controller
         $colors = '';
         $clarities = '';
         if($certificate) {
-            $shapes = $certificate->shapes()->with('variation')->get()->pluck('variation.name')->implode('/');
-            $colors = $certificate->colors()->with('variation')->get()->pluck('variation.name')->implode(',');
-            $clarities = $certificate->clarities()->with('variation')->get()->pluck('variation.name')->implode(',');    
+            $shapes = $certificate->shapes()->with('variation')->get()->pluck('variation.name')->implode(' / ');
+            $colors = $certificate->colors()->with('variation')->get()->pluck('variation.name')->implode(' / ');
+            $clarities = $certificate->clarities()->with('variation')->get()->pluck('variation.name')->implode(' / ');    
         }
         return view('search-result')->with('certificate', $certificate)->with('shapes', $shapes)->with('colors', $colors)->with('clarities', $clarities)->render();
     }
@@ -194,6 +194,7 @@ class PageController extends Controller
                 'weight',
                 'refractive_index',
                 'origin',
+                'qr_code',
                 'status',
                 'created_at'
             );
@@ -229,6 +230,7 @@ class PageController extends Controller
     {
         if($request->ajax()){
             $data = $this->certificateQuery($request);
+            $totalWeight = (clone $data)->sum('total_weight');
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
@@ -237,6 +239,9 @@ class PageController extends Controller
                             </a>
                             <a href="javascript:void(0);" class="btn btn-outline-dark btn-circle print-card" data-certificate-id="'.$row->id.'">
                                 <i class="fas fa-print"></i>
+                            </a>
+                            <a href="'.asset('assets/'.$row->qr_code).'" class="btn btn-outline-danger btn-circle" download>
+                                <i class="fas fa-download"></i>
                             </a></div>';
                     return $btn;
                 })
@@ -250,6 +255,7 @@ class PageController extends Controller
                         return '<span class="badge badge-danger">Inactive</span>';
                     }
                 })
+                ->with('total_weight', $totalWeight)
                 ->rawColumns(['action','status'])
                 ->make(true);
         }
@@ -265,12 +271,13 @@ class PageController extends Controller
     public function exportCertificatesCsv(Request $request)
     {
         $data = $this->certificateQuery($request)->get();
+        $totalWeight = $this->certificateQuery($request)->sum('total_weight');
         $filename = "certificates.csv";
         $headers = [
             "Content-Type" => "text/csv",
             "Content-Disposition" => "attachment; filename=$filename",
         ];
-        $callback = function () use ($data) {
+        $callback = function () use ($data, $totalWeight) {
             $file = fopen('php://output', 'w');
             fputcsv($file, [
                 'Summary No',
@@ -294,6 +301,12 @@ class PageController extends Controller
                     $row->status == 1 ? 'Active' : 'Inactive',
                 ]);
             }
+            fputcsv($file, []);
+            fputcsv($file, [
+                '', '', '', 'Total',
+                $totalWeight,
+                '', '', ''
+            ]);
             fclose($file);
         };
         return response()->stream($callback, 200, $headers);
@@ -309,9 +322,9 @@ class PageController extends Controller
     public function printCertificate(Request $request)
     {
         $certificate = $this->certificateService->getCertificateById($request->certificate_id);
-        $shapes = $certificate->shapes()->with('variation')->get()->pluck('variation.name')->implode('/');
-        $colors = $certificate->colors()->with('variation')->get()->pluck('variation.name')->implode(',');
-        $clarities = $certificate->clarities()->with('variation')->get()->pluck('variation.name')->implode(',');
+        $shapes = $certificate->shapes()->with('variation')->get()->pluck('variation.name')->implode(' / ');
+        $colors = $certificate->colors()->with('variation')->get()->pluck('variation.name')->implode(' / ');
+        $clarities = $certificate->clarities()->with('variation')->get()->pluck('variation.name')->implode(' / ');
         return view('certificates.print')->with('certificate', $certificate)->with('shapes', $shapes)->with('colors', $colors)->with('clarities', $clarities);
     }
     public function addCertificate(Request $request)
@@ -337,6 +350,7 @@ class PageController extends Controller
         $data['name'] = $request->client_name;
         $data['address'] = $request->address;
         $data['weight'] = $request->weight;
+        $data['total_weight'] = $request->total_weight;
         $data['refractive_index'] = $request->refractive_index;
         $data['specific_gravity'] = $request->specific_gravity;
         $data['hardness'] = $request->hardness;
@@ -423,6 +437,7 @@ class PageController extends Controller
             $data['name'] = $request->client_name;
             $data['address'] = $request->address;
             $data['weight'] = $request->weight;
+            $data['total_weight'] = $request->total_weight;
             $data['refractive_index'] = $request->refractive_index;
             $data['specific_gravity'] = $request->specific_gravity;
             $data['hardness'] = $request->hardness;

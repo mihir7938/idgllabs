@@ -30,13 +30,16 @@
                         <div class="left"><label>SHAPE/CUT</label></div><span class="center">:</span><div class="right">{{ $shapes }}</div>
                     </div>
                     <div class="d-flex">
-                        <div class="left"><label>TOTAL EST WT</label></div><span class="center">:</span><div class="right">{{ $certificate->weight }}</div>
+                        <div class="left"><label>TOTAL EST WT</label></div><span class="center">:</span><div class="right">{{ $certificate->weight }} carats</div>
                     </div>
                     <div class="d-flex">
                         <div class="left"><label>COLOUR</label></div><span class="center">:</span><div class="right"><strong>{{ $colors }}</strong></div>
                     </div>
                     <div class="d-flex">
                         <div class="left"><label>CLARITY</label></div><span class="center">:</span><div class="right"><strong>{{ $clarities }}</strong></div>
+                    </div>
+                    <div class="d-flex">
+                        <div class="left"><label>Identification</label></div><span class="center">:</span><div class="right">{!! html_entity_decode($certificate->identification) !!}</div>
                     </div>
                     <div class="d-flex">
                         <div class="left"><label>COMMENTS</label></div><span class="center">:</span><div class="right">{!! html_entity_decode($certificate->comment) !!}</div>
