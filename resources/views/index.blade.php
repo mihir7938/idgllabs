@@ -62,7 +62,7 @@
             <div class="row g-5">
                 <div class="col-lg-5 wow fadeInLeft" data-wow-delay="0.1s">
                     <div class="rounded">
-                        <img src="img/about-us.png" class="img-fluid w-100 border-bottom border-5 border-primary" style="border-top-right-radius: 300px; border-top-left-radius: 300px;" alt="Image">
+                        <img src="img/about-us.jpeg" class="img-fluid w-100 border-bottom border-5 border-primary" style="border-top-right-radius: 300px; border-top-left-radius: 300px;" alt="Image">
                     </div>
                 </div>
                 <div class="col-lg-7 wow fadeInRight" data-wow-delay="0.3s">
@@ -88,7 +88,7 @@
                                 <p class="text-primary h6 mb-3"><i class="fa fa-check-circle text-secondary me-2"></i> Fast track service also available.</p>
                                 <p class="text-primary h6 mb-3"><i class="fa fa-check-circle text-secondary me-2"></i> Online report verification for our valued customer</p>
                             </div>
-                            <a class="btn btn-primary border-secondary rounded-pill py-3 px-5 wow fadeInUp" data-wow-delay="0.1s" href="#">Read More</a>
+                            <a class="btn btn-primary border-secondary rounded-pill py-3 px-5 wow fadeInUp" data-wow-delay="0.1s" href="{{route('about')}}">Read More</a>
                         </div>
                     </div>
                 </div>
