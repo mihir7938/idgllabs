@@ -129,6 +129,10 @@ label.error {
   margin-left: 10px;
   margin-bottom: .5rem;
 }
+.dataTables_wrapper div.print-btn-container {
+  margin-left: 10px;
+  margin-bottom: .5rem;
+}
 #booking_details {
   display: none;
 }

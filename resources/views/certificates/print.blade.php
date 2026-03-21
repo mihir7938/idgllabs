@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Print - {{ $certificate->id }}</title>
+    <title>Print</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,600,700&display=fallback">
@@ -13,12 +13,18 @@
             body {
                 font-size: 0.8rem;
             }
+            .print-start {
+                margin-top: 216px !important;
+            }
             .print-container { 
                 width: 325px;
                 height: 204px;
                 padding: 12px !important;
                 border: 1px solid #ddd !important;
-                margin: 20px auto !important;
+                margin-top: 0 !important;
+                margin-bottom: 95px !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
                 page-break-inside: avoid !important;
             }
             .print-header img {
@@ -153,92 +159,95 @@
 </head>
 <body class="bg-light">
     <div class="container">
-        <div class="print-container">
-            <div class="print-header">
-                <div class="d-flex">
-                    <div class="left">
-                        <img src="{{asset('img/small_logo.png')}}" alt="Logo">
-                    </div>
-                    <div class="right">
-                        <h3>International<br/>Diamond & Gem Laboratory</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="print-body">
-                <div class="block">
-                    <div class="content">
+        <div class="print-start">
+            @foreach($certificates as $certificate)
+                <div class="print-container">
+                    <div class="print-header">
                         <div class="d-flex">
-                            <div class="left"><label>PARTY NAME</label></div><span class="center">:</span><div class="right">{{ $certificate->name }}</div>
-                        </div>
-                        <div class="d-flex">
-                            <div class="left"><label>SUMMARY NO</label></div><span class="center">:</span><div class="right"><strong>{{ $certificate->summary_no }}</strong></div>
+                            <div class="left">
+                                <img src="{{asset('img/small_logo.png')}}" alt="Logo">
+                            </div>
+                            <div class="right">
+                                <h3>International<br/>Diamond & Gem Laboratory</h3>
+                            </div>
                         </div>
                     </div>
-                    <div class="qr_code">
-                        @if($certificate->qr_code)
-                            <img src="{{asset('assets/'.$certificate->qr_code)}}" alt="QR" />
-                        @endif
-                    </div>
-                </div>
-                <div class="block desc">
-                    @if($certificate->description)
-                        <div class="d-flex">
-                            <div class="left"><label>DESCRIPTION</label></div><span class="center">:</span><div class="right">{!! html_entity_decode($certificate->description) !!}</div>
+                    <div class="print-body">
+                        <div class="block">
+                            <div class="content">
+                                <div class="d-flex">
+                                    <div class="left"><label>PARTY NAME</label></div><span class="center">:</span><div class="right">{{ $certificate->name }}</div>
+                                </div>
+                                <div class="d-flex">
+                                    <div class="left"><label>SUMMARY NO</label></div><span class="center">:</span><div class="right"><strong>{{ $certificate->summary_no }}</strong></div>
+                                </div>
+                            </div>
+                            <div class="qr_code">
+                                @if($certificate->qr_code)
+                                    <img src="{{asset('assets/'.$certificate->qr_code)}}" alt="QR" />
+                                @endif
+                            </div>
                         </div>
-                    @endif
-                </div>
-                <div class="block">
-                    <div class="bottom">
-                        @if($shapes)
-                            <div class="d-flex">
-                                <div class="left"><label>SHAPE/CUT</label></div><span class="center">:</span><div class="right">{{ $shapes }}</div>
+                        <div class="block desc">
+                            @if($certificate->description)
+                                <div class="d-flex">
+                                    <div class="left"><label>DESCRIPTION</label></div><span class="center">:</span><div class="right">{!! html_entity_decode($certificate->description) !!}</div>
+                                </div>
+                            @endif
+                        </div>
+                        <div class="block">
+                            <div class="bottom">
+                                @if($certificate->shapes_data)
+                                    <div class="d-flex">
+                                        <div class="left"><label>SHAPE/CUT</label></div><span class="center">:</span><div class="right">{{ $certificate->shapes_data }}</div>
+                                    </div>
+                                @endif
+                                @if($certificate->weight)
+                                    <div class="d-flex">
+                                        <div class="left"><label>TOTAL EST WT</label></div><span class="center">:</span><div class="right">{{ $certificate->weight }} carats</div>
+                                    </div>
+                                @endif
+                                @if($certificate->colors_data)
+                                    <div class="d-flex">
+                                        <div class="left"><label>COLOUR</label></div><span class="center">:</span><div class="right"><strong>{{ $certificate->colors_data }}</strong></div>
+                                    </div>
+                                @endif
+                                @if($certificate->clarities_data)
+                                    <div class="d-flex">
+                                        <div class="left"><label>CLARITY</label></div><span class="center">:</span><div class="right"><strong>{{ $certificate->clarities_data }}</strong></div>
+                                    </div>
+                                @endif
+                                @if($certificate->identification)
+                                    <div class="d-flex">
+                                        <div class="left"><label>Identification</label></div><span class="center">:</span><div class="right">{!! html_entity_decode($certificate->identification) !!}</div>
+                                    </div>
+                                @endif
+                                @if($certificate->comment)
+                                    <div class="d-flex">
+                                        <div class="left"><label>COMMENTS</label></div><span class="center">:</span><div class="right small">{!! html_entity_decode($certificate->comment) !!}</div>
+                                    </div>
+                                @endif
                             </div>
-                        @endif
-                        @if($certificate->weight)
-                            <div class="d-flex">
-                                <div class="left"><label>TOTAL EST WT</label></div><span class="center">:</span><div class="right">{{ $certificate->weight }} carats</div>
+                            <div class="image">
+                                @if($certificate->image)
+                                    <img src="{{asset('assets/'.$certificate->image)}}" alt="Certificate" />
+                                @endif
                             </div>
-                        @endif
-                        @if($colors)
-                            <div class="d-flex">
-                                <div class="left"><label>COLOUR</label></div><span class="center">:</span><div class="right"><strong>{{ $colors }}</strong></div>
-                            </div>
-                        @endif
-                        @if($clarities)
-                            <div class="d-flex">
-                                <div class="left"><label>CLARITY</label></div><span class="center">:</span><div class="right"><strong>{{ $clarities }}</strong></div>
-                            </div>
-                        @endif
-                        @if($certificate->identification)
-                            <div class="d-flex">
-                                <div class="left"><label>Identification</label></div><span class="center">:</span><div class="right">{!! html_entity_decode($certificate->identification) !!}</div>
-                            </div>
-                        @endif
-                        @if($certificate->comment)
-                            <div class="d-flex">
-                                <div class="left"><label>COMMENTS</label></div><span class="center">:</span><div class="right small">{!! html_entity_decode($certificate->comment) !!}</div>
-                            </div>
-                        @endif
+                        </div>
+                        <p class="small mt-1">for terms & condition visit www.idgllabs.com</p>
                     </div>
-                    <div class="image">
-                        @if($certificate->image)
-                            <img src="{{asset('assets/'.$certificate->image)}}" alt="Certificate" />
-                        @endif
-                    </div>
                 </div>
-                <p class="small mt-1">for terms & condition visit www.idgllabs.com</p>
-            </div>
-            <div class="text-center p-4 no-print">
-                <button onclick="window.print()" class="btn btn-primary me-3">
-                    <i class="fas fa-print me-2"></i>Print Receipt
-                </button>
-                <button onclick="window.close()" class="btn btn-dark">
-                    <i class="fas fa-times me-2"></i>Close
-                </button>
-            </div>
+            @endforeach
+        </div>
+        <div class="text-center p-4 no-print">
+            <button onclick="window.print()" class="btn btn-primary me-3">
+                <i class="fas fa-print me-2"></i>Print Receipt
+            </button>
+            <button onclick="window.close()" class="btn btn-dark">
+                <i class="fas fa-times me-2"></i>Close
+            </button>
         </div>
     </div>
-    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html> 

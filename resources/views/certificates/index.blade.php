@@ -151,6 +151,29 @@
             $('#start_date').datepicker('setEndDate', maxDate);
             $(this).valid();
         });
+        $(document).on('change', '.print_checkbox', function() {
+            let checked = $('.print_checkbox:checked');
+            if (checked.length > 2) {
+                this.checked = false;
+                alert('You can select only 2 certificates');
+            }
+        });
+        $(document).on('click', '#print_selected', function() {
+            let ids = [];
+            $('.print_checkbox:checked').each(function() {
+                ids.push($(this).val());
+            });
+            if (ids.length === 0) {
+                alert('Please select at least 1 certificate');
+                return;
+            }
+            if (ids.length > 2) {
+                alert('You can select only 2 certificates');
+                return;
+            }
+            let url = '{{ route("certificates.print") }}' + '?ids=' + ids.join(',');
+            window.open(url, '_blank', 'width=900,height=700');
+        });
         var table = $('#dataTableCertificate').DataTable({
            serverSide: true,
            ajax: {
@@ -175,7 +198,7 @@
                     return json.data;
                 }
            },
-           dom: '<"row"<"col-md-6 d-flex align-items-center"lB><"col-md-6 text-end"f>>rtip',
+           dom: '<"row"<"col-md-6 d-flex align-items-center"lB<"print-btn-container">><"col-md-6 text-end"f>>rtip',
            buttons: [
                 {
                     text: 'CSV',
@@ -208,6 +231,11 @@
                     }
                 }
            ],
+           initComplete: function () {
+                $('.print-btn-container').html(
+                    '<button id="print_selected" class="btn btn-primary ms-2">Print</button>'
+                );
+           },
            order: [[9, 'desc']],
            columns: [
                 { data: 'action', orderable:false, searchable:false },
@@ -253,12 +281,12 @@
                 table.draw();
             }
         });
-        $(document).on('click', '.print-card', function() {
+        /*$(document).on('click', '.print-card', function() {
            var certificateId = $(this).data('certificate-id');
            var certificateUrl = '{{ route("certificates.print") }}' + 
                '?certificate_id=' + certificateId;
            window.open(certificateUrl, '_blank', 'width=800,height=600,scrollbars=yes,resizable=yes');
-        });
+        });*/
     });
 </script>
 @endsection

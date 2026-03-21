@@ -234,11 +234,10 @@ class PageController extends Controller
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
-                    $btn = '<div class="text-center"><a href="'.route('certificates.edit',$row->id).'" class="btn btn-outline-primary btn-circle">
+                    $btn = '<div class="text-center">
+                            <input type="checkbox" class="print_checkbox mr-1" value="'.$row->id.'">
+                            <a href="'.route('certificates.edit',$row->id).'" class="btn btn-outline-primary btn-circle">
                                 <i class="fas fa-pen"></i>
-                            </a>
-                            <a href="javascript:void(0);" class="btn btn-outline-dark btn-circle print-card" data-certificate-id="'.$row->id.'">
-                                <i class="fas fa-print"></i>
                             </a>
                             <a href="'.asset('assets/'.$row->qr_code).'" class="btn btn-outline-danger btn-circle" download>
                                 <i class="fas fa-download"></i>
@@ -262,6 +261,9 @@ class PageController extends Controller
                 ->rawColumns(['action','status'])
                 ->make(true);
         }
+        /*<a href="javascript:void(0);" class="btn btn-outline-dark btn-circle print-card" data-certificate-id="'.$row->id.'">
+            <i class="fas fa-print"></i>
+        </a>*/
         $shape_id = VariationType::SHAPE_VARIATION_ID;
         $shapes = $this->variationService->getAllVariations($shape_id);
         $color_id = VariationType::COLOR_VARIATION_ID;
@@ -324,11 +326,21 @@ class PageController extends Controller
     }
     public function printCertificate(Request $request)
     {
-        $certificate = $this->certificateService->getCertificateById($request->certificate_id);
-        $shapes = $certificate->shapes()->with('variation')->get()->pluck('variation.name')->implode(' / ');
-        $colors = $certificate->colors()->with('variation')->get()->pluck('variation.name')->implode(' / ');
-        $clarities = $certificate->clarities()->with('variation')->get()->pluck('variation.name')->implode(' / ');
-        return view('certificates.print')->with('certificate', $certificate)->with('shapes', $shapes)->with('colors', $colors)->with('clarities', $clarities);
+        if ($request->ids) {
+            $ids = explode(',', $request->ids);
+            $certificates = Certificate::whereIn('id', $ids)->get();
+        } else {
+            $certificates = collect([
+                $this->certificateService->getCertificateById($request->certificate_id)
+            ]);
+        }
+        //$certificate = $this->certificateService->getCertificateById($request->certificate_id);
+        foreach ($certificates as $certificate) {
+            $certificate->shapes_data = $certificate->shapes()->with('variation')->get()->pluck('variation.name')->implode(' / ');
+            $certificate->colors_data = $certificate->colors()->with('variation')->get()->pluck('variation.name')->implode(' / ');
+            $certificate->clarities_data = $certificate->clarities()->with('variation')->get()->pluck('variation.name')->implode(' / ');
+        }
+        return view('certificates.print', compact('certificates'));
     }
     public function addCertificate(Request $request)
     {
