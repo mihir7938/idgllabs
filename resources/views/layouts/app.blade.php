@@ -39,11 +39,12 @@
             </div>
             <div class="col-lg-6 text-lg-end mb-2 mb-lg-0">
                 <div class="d-inline-flex align-items-center" style="height: 45px;">
-                    <a class="btn btn-sm btn-outline-light btn-square rounded-circle me-2" href=""><i class="fab fa-twitter fw-normal text-secondary"></i></a>
-                    <a class="btn btn-sm btn-outline-light btn-square rounded-circle me-2" href=""><i class="fab fa-facebook-f fw-normal text-secondary"></i></a>
-                    <a class="btn btn-sm btn-outline-light btn-square rounded-circle me-2" href=""><i class="fab fa-linkedin-in fw-normal text-secondary"></i></a>
-                    <a class="btn btn-sm btn-outline-light btn-square rounded-circle me-2" href=""><i class="fab fa-instagram fw-normal text-secondary"></i></a>
-                    <a class="btn btn-sm btn-outline-light btn-square rounded-circle" href=""><i class="fab fa-youtube fw-normal text-secondary"></i></a>
+                    {{--<a class="btn btn-sm btn-outline-light btn-square rounded-circle me-2" href=""><i class="fab fa-twitter fw-normal text-secondary"></i></a>--}}
+                    <a class="btn btn-sm btn-outline-light btn-square rounded-circle me-2" href="https://www.facebook.com/share/18TwmCFURZ/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook-f fw-normal text-secondary"></i></a>
+                    <a class="btn btn-sm btn-outline-light btn-square rounded-circle me-2" href="https://www.instagram.com/idgllabs?igsh=c253eGJlNWV2aG54" target="_blank"><i class="fab fa-instagram fw-normal text-secondary"></i></a>
+                    <a class="btn btn-sm btn-outline-light btn-square rounded-circle me-2" href="https://www.linkedin.com/in/drashtikapadia19?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank"><i class="fab fa-linkedin-in fw-normal text-secondary"></i></a>
+                    <a class="btn btn-sm btn-outline-light btn-square rounded-circle me-2" href="https://share.google/J3WcWbD19fzA8Og6X" target="_blank"><i class="fab fa-google fw-normal text-secondary"></i></a>
+                    {{--<a class="btn btn-sm btn-outline-light btn-square rounded-circle" href=""><i class="fab fa-youtube fw-normal text-secondary"></i></a>--}}
                 </div>
             </div>
         </div>
@@ -104,10 +105,10 @@
                         <a href="tel:+919313385613"><i class="fas fa-phone me-2"></i> +91 9313385613</a>
                         <div class="d-flex align-items-center">
                             <i class="fas fa-share fa-2x text-secondary me-2"></i>
-                            <a class="btn mx-1" href="javascript:void(0);"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn mx-1" href="javascript:void(0);"><i class="fab fa-twitter"></i></a>
-                            <a class="btn mx-1" href="javascript:void(0);"><i class="fab fa-instagram"></i></a>
-                            <a class="btn mx-1" href="javascript:void(0);"><i class="fab fa-linkedin-in"></i></a>
+                            <a class="btn mx-1" href="https://www.facebook.com/share/18TwmCFURZ/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn mx-1" href="https://www.instagram.com/idgllabs?igsh=c253eGJlNWV2aG54" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a class="btn mx-1" href="https://www.linkedin.com/in/drashtikapadia19?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                            <a class="btn mx-1" href="https://share.google/J3WcWbD19fzA8Og6X" target="_blank"><i class="fab fa-google"></i></a>
                         </div>
                     </div>
                 </div>

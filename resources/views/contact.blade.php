@@ -53,9 +53,15 @@
                             <div class="bg-light d-flex align-items-center justify-content-center" style="width: 90px; height: 90px; border-radius: 10px;"><i class="fas fa-share fa-3x text-primary"></i></div>
                         </div>
                         <div class="d-flex">
-                            <a class="btn btn-secondary border-secondary me-2 p-0" href="">facebook <i class="fas fa-chevron-circle-right"></i></a>
-                            <a class="btn btn-secondary border-secondary mx-2 p-0" href="">twitter <i class="fas fa-chevron-circle-right"></i></a>
+                            {{--<a class="btn btn-secondary border-secondary me-2 p-0" href="">facebook <i class="fas fa-chevron-circle-right"></i></a>
                             <a class="btn btn-secondary border-secondary mx-2 p-0" href="">instagram <i class="fas fa-chevron-circle-right"></i></a>
+                            <a class="btn btn-secondary border-secondary mx-2 p-0" href="">linkedin <i class="fas fa-chevron-circle-right"></i></a>
+                            <a class="btn btn-secondary border-secondary mx-2 p-0" href="">google <i class="fas fa-chevron-circle-right"></i></a>--}}
+
+                            <a class="btn btn-sm btn-outline-primary btn-square rounded-circle me-2" href="https://www.facebook.com/share/18TwmCFURZ/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook-f fw-normal text-secondary"></i></a>
+                            <a class="btn btn-sm btn-outline-primary btn-square rounded-circle me-2" href="https://www.instagram.com/idgllabs?igsh=c253eGJlNWV2aG54" target="_blank"><i class="fab fa-instagram fw-normal text-secondary"></i></a>
+                            <a class="btn btn-sm btn-outline-primary btn-square rounded-circle me-2" href="https://www.linkedin.com/in/drashtikapadia19?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank"><i class="fab fa-linkedin-in fw-normal text-secondary"></i></a>
+                            <a class="btn btn-sm btn-outline-primary btn-square rounded-circle me-2" href="https://share.google/J3WcWbD19fzA8Og6X" target="_blank"><i class="fab fa-google fw-normal text-secondary"></i></a>
                         </div>
                     </div>
                 </div>
