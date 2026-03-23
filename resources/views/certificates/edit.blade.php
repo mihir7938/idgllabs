@@ -397,6 +397,16 @@
                 ' - <span style="font-style:italic;font-size:12px;">' + client + '</span></span>'
             );
         }
+        function cleanSummernote(content) {
+            if (!content) return '';
+            let cleaned = content
+                .replace(/<p><br><\/p>/gi, '')
+                .replace(/<br>/gi, '')
+                .replace(/&nbsp;/gi, '')
+                .trim();
+            let text = $('<div>').html(cleaned).text().trim();
+            return text.length ? content : '';
+        }
         $(document).on('click', '[data-toggle="lightbox"]', function(event) {
             event.preventDefault();
             $(this).ekkoLightbox({
@@ -427,6 +437,7 @@
             $('#total_weight').val($(this).val());
         });
         $('#edit-certificates-form').validate({
+            ignore: [],
             rules:{
                 company: {
                     required: true
@@ -473,6 +484,15 @@
                 } else {
                     error.insertAfter(element);
                 }
+            },
+            submitHandler: function(form) {
+                let desc = cleanSummernote($('#description').summernote('code'));
+                let comment = cleanSummernote($('#comment').summernote('code'));
+                let identification = cleanSummernote($('#identification').summernote('code'));
+                $('#description').val(desc);
+                $('#comment').val(comment);
+                $('#identification').val(identification);
+                form.submit();
             }
         });
     });

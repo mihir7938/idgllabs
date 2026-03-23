@@ -130,7 +130,7 @@
         <div class="container">
             <div class="row g-4 align-items-center">
                 <div class="col-md-12 text-center mb-md-0">
-                    <span class="text-white">Copyright © 2026 <a href="{{route('index')}}" class="text-info">IDGL - International Diamond & Gem Laboratory.</a> All rights reserved. | Powered by <a href="https://strongservices.in/" target="_blank" class="text-info">Strong Services</a></span>
+                    <span class="text-white">Copyright © 2026 <a href="{{route('index')}}" class="text-primary">IDGL - International Diamond & Gem Laboratory.</a> All rights reserved. | Powered by <a href="https://strongservices.in/" target="_blank" class="text-primary">Strong Services</a></span>
                 </div>
             </div>
         </div>

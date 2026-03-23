@@ -331,6 +331,16 @@
                 ' - <span style="font-style:italic;font-size:12px;">' + client + '</span></span>'
             );
         }
+        function cleanSummernote(content) {
+            if (!content) return '';
+            let cleaned = content
+                .replace(/<p><br><\/p>/gi, '')
+                .replace(/<br>/gi, '')
+                .replace(/&nbsp;/gi, '')
+                .trim();
+            let text = $('<div>').html(cleaned).text().trim();
+            return text.length ? content : '';
+        }
         bsCustomFileInput.init();
         function generateSummary() {
             var selectedValue = $('#certificate_date').val();
@@ -383,6 +393,7 @@
             $('#total_weight').val($(this).val());
         });
         $('#add-certificates-form').validate({
+            ignore: [],
             rules:{
                 certificate_date: {
                     required: true
@@ -435,6 +446,15 @@
                 } else {
                     error.insertAfter(element);
                 }
+            },
+            submitHandler: function(form) {
+                let desc = cleanSummernote($('#description').summernote('code'));
+                let comment = cleanSummernote($('#comment').summernote('code'));
+                let identification = cleanSummernote($('#identification').summernote('code'));
+                $('#description').val(desc);
+                $('#comment').val(comment);
+                $('#identification').val(identification);
+                form.submit();
             }
         });
     });

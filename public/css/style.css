@@ -35,7 +35,30 @@
   z-index: 9999;
   transform: translate(-50%, -50%);
 }
-
+.bg-primary {
+    background-color: #433979 !important;
+}
+h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
+    color: #433979;
+}
+.text-primary {
+    color: #433979 !important;
+}
+.text-secondary {
+    color: #00AFEF !important;
+}
+.footer {
+  background: #433979 !important;
+}
+.bg-breadcrumb {
+    background: linear-gradient(rgba(67, 57, 121, 0.9), rgba(67, 57, 121, 0.8)), url(../img/breadcrumb-bg.webp) !important;
+}
+.border-secondary {
+    border-color: #00AFEF !important;
+}
+.bg-secondary {
+    background-color: #00AFEF !important;
+}
 .back-to-top {
     position: fixed;
     right: 30px;
