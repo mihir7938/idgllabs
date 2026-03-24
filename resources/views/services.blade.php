@@ -11,7 +11,7 @@
     </div>
     <div class="container-fluid features overflow-hidden py-5">
         <div class="container">
-            <div class="row g-4 justify-content-center text-center">
+            {{--<div class="row g-4 justify-content-center text-center">
                 <div class="col-md-6 col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="feature-item text-center p-4">
                         <div class="feature-icon p-3 mb-4">
@@ -76,6 +76,36 @@
                             <h5 class="mb-3">Online report verification for our valued customer</h5>
                             <p class="mb-3">Online Report Verification allows customers to securely check and confirm the authenticity of their grading reports anytime.</p>
                         </div>
+                    </div>
+                </div>
+            </div>--}}
+            <div class="row g-5 mt-4">
+                <div class="col-xl-6 wow fadeInLeft" data-wow-delay="0.1s">
+                    <div class="bg-light">
+                        <img src="img/lab-grown.png" class="img-fluid w-100 rounded" alt="Lab grown Diamond Jewellery grading report">
+                    </div>
+                </div>
+                <div class="col-xl-6 wow fadeInRight" data-wow-delay="0.3s">
+                    <h3 class="mb-4">Lab grown Diamond Jewellery grading report</h3>
+                    <p class="mb-4">A Lab Grown Diamond Jewellery Grading Report is an official document that provides a detailed assessment of a jewellery piece set with laboratory-created diamonds. This report ensures transparency, authenticity, and quality assurance for both buyers and sellers.</p>
+                    <div class="mb-4">
+                        <p class="text-primary h6 mb-3"><i class="fa fa-check-circle text-secondary me-2"></i> To certify that the diamond is laboratory grown</p>
+                        <p class="text-primary h6 mb-3"><i class="fa fa-check-circle text-secondary me-2"></i> To provide accurate grading based on international standards</p>
+                        <p class="text-primary h6 mb-3"><i class="fa fa-check-circle text-secondary me-2"></i> To help customers make informed purchasing decisions</p>
+                        <p class="text-primary h6 mb-3"><i class="fa fa-check-circle text-secondary me-2"></i> To ensure trust and credibility in the jewellery industry</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row g-5 mt-4">
+                <div class="col-xl-6 wow fadeInLeft order" data-wow-delay="0.3s">
+                    <h3 class="mb-4">Natural loose diamond certification report</h3>
+                    <p class="mb-4">A trusted certification that verifies the authenticity and quality of your natural diamond with precise grading and professional evaluation.</p>
+                    <p class="mb-4">The Natural Loose Diamond Certification Report is an official document that confirms the diamond is 100% natural (earth-mined) and has been independently evaluated by expert gemologists.</p>
+                    <p class="mb-4">This report provides a detailed and unbiased assessment of the diamond’s characteristics, helping buyers, sellers, and jewelers make informed decisions with complete confidence.</p>
+                </div>
+                <div class="col-xl-6 wow fadeInRight" data-wow-delay="0.3s">
+                    <div class="bg-light">
+                        <img src="img/natural-loose.png" class="img-fluid w-100 rounded" alt="Natural loose diamond certification report">
                     </div>
                 </div>
             </div>
