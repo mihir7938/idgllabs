@@ -108,7 +108,7 @@
                     <div class="service-item">
                         <div class="service-inner">
                             <div class="service-image">
-                                <img src="img/guinness-world-record.webp" class="img-fluid w-100 rounded" alt="guinness-world-record">
+                                <img src="img/guinness-world-record.png" class="img-fluid w-100 rounded" alt="guinness-world-record" style="border: 1px solid #ccc;">
                             </div>
                         </div>
                     </div>
