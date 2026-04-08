@@ -28,7 +28,8 @@
                 page-break-inside: avoid !important;
             }
             .print-header img {
-                width: 30px !important;
+                width: 40px !important;
+                margin-top: -4px;
             }
             .print-header .left {
                 width: 60px !important;
@@ -40,21 +41,35 @@
                 font-size: 16px !important;
             }
             .print-body {
-                font-size: 8px !important;
+                margin-top: 4px !important;
+                font-size: 9px !important;
                 line-height: 1.3 !important;
             }
             .print-body .qr_code {
-                width: 36px !important;
-                margin-top: -14px !important;
+                width: 40px !important;
+                margin-top: -18px !important;
             }
             .print-body .content {
                 width: calc(100% - 45px) !important;
             }
             .print-body .image {
-                width: 55px !important;
+                width: 62px !important;
+            }
+            .print-body .image_hoz {
+                margin-top: 5px;
+                width: 125px !important;
+            }
+            .print-body .image_ver {
+                width: 50px !important;
             }
             .print-body .bottom {
-                width: calc(100% - 58px) !important;
+                width: calc(100% - 65px) !important;
+            }
+            .print-body .bottom_hoz {
+                width: calc(100% - 128px) !important;
+            }
+            .print-body .bottom_ver {
+                width: calc(100% - 53px) !important;
             }
             .print-body .left {
                 width: 62px !important;
@@ -64,6 +79,9 @@
             }
             .print-body .right {
                 width: calc(100% - 69px) !important;
+            }
+            .print-body .desc {
+                line-height: 1.2;
             }
             .small {
                 font-size: 7px !important;
@@ -102,6 +120,7 @@
             font-weight: bold;
             text-transform: uppercase;
             margin-bottom: 0px;
+            color: #372E6F;
         }
         .print-body {
             margin-top: 8px;
@@ -133,10 +152,26 @@
         .print-body .image {
             width: 110px;
         }
-        .print-body .image img {
+        .print-body .image_hoz {
+            width: 240px;
+        }
+        .print-body .image_ver {
+            width: 110px;
+            display: flex;
+            align-items: center;
+        }
+        .print-body .image img,
+        .print-body .image_hoz img,
+        .print-body .image_ver img {
             width: 100%;
         }
         .print-body .bottom {
+            width: calc(100% - 115px);
+        }
+        .print-body .bottom_hoz {
+            width: calc(100% - 245px);
+        }
+        .print-body .bottom_ver {
             width: calc(100% - 115px);
         }
         .print-body label {
@@ -165,7 +200,7 @@
                     <div class="print-header">
                         <div class="d-flex">
                             <div class="left">
-                                <img src="{{asset('img/small_logo.png')}}" alt="Logo">
+                                <img src="{{asset('img/card_logo.png')}}" alt="Logo">
                             </div>
                             <div class="right">
                                 <h3>International<br/>Diamond & Gem Laboratory</h3>
@@ -188,15 +223,36 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="block desc">
-                            @if($certificate->description)
-                                <div class="d-flex">
-                                    <div class="left"><label>DESCRIPTION</label></div><span class="center">:</span><div class="right">{!! html_entity_decode($certificate->description) !!}</div>
-                                </div>
-                            @endif
-                        </div>
+                        @php
+                            if($certificate->image_format == 'horizontal_rectangle') {
+                                $bottom_class = 'bottom_hoz';
+                                $image_class = 'image_hoz';
+                            } else if($certificate->image_format == 'vertical_rectangle') {
+                                $bottom_class = 'bottom_ver';
+                                $image_class = 'image_ver';
+                            } else {
+                                $bottom_class = 'bottom';
+                                $image_class = 'image';
+                            }
+                        @endphp
+                        @if($certificate->image_format == 'horizontal_rectangle' || $certificate->image_format == 'square')
+                            <div class="block desc">
+                                @if($certificate->description)
+                                    <div class="d-flex">
+                                        <div class="left"><label>DESCRIPTION</label></div><span class="center">:</span><div class="right">{!! html_entity_decode($certificate->description) !!}</div>
+                                    </div>
+                                @endif
+                            </div>
+                        @endif
                         <div class="block">
-                            <div class="bottom">
+                            <div class="{{ $bottom_class }}">
+                                @if($certificate->image_format == 'vertical_rectangle')
+                                    @if($certificate->description)
+                                        <div class="d-flex">
+                                            <div class="left"><label>DESCRIPTION</label></div><span class="center">:</span><div class="right">{!! html_entity_decode($certificate->description) !!}</div>
+                                        </div>
+                                    @endif
+                                @endif
                                 @if($certificate->shapes_data)
                                     <div class="d-flex">
                                         <div class="left"><label>SHAPE/CUT</label></div><span class="center">:</span><div class="right">{{ $certificate->shapes_data }}</div>
@@ -228,13 +284,12 @@
                                     </div>
                                 @endif
                             </div>
-                            <div class="image">
+                            <div class="{{ $image_class }}">
                                 @if($certificate->image)
                                     <img src="{{asset('assets/'.$certificate->image)}}" alt="Certificate" />
                                 @endif
                             </div>
                         </div>
-                        <p class="small mt-1">for terms & condition visit www.idgllabs.com</p>
                     </div>
                 </div>
             @endforeach

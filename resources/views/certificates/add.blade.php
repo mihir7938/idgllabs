@@ -167,13 +167,21 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="image">Image (allowed only JPG,JPEG &amp; PNG files)</label>
-                                            <div class="input-group image_div">
-                                                <div class="custom-file">             
-                                                    <input type="file" class="custom-file-input" id="image" name="image">
-                                                    <label class="custom-file-label" for="image">Choose file</label>
-                                                </div>              
-                                            </div>
+                                            <label for="image_format">Image Format</label>
+                                            <select id="image_format" name="image_format" class="form-control">
+                                                <option value="square">Square</option>
+                                                <option value="vertical_rectangle">Vertical Rectangle</option>
+                                                <option value="horizontal_rectangle">Horizontal Rectangle</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="print_format">Print Format</label>
+                                            <select id="print_format" name="print_format" class="form-control">
+                                                <option value="format_1">Format 1</option>
+                                                <option value="format_2">Format 2</option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -185,6 +193,19 @@
                                                 <span class="mx-2"></span>
                                                 <input type="radio" id="no" name="active" value="0">
                                                 <label for="no">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="image">Image (allowed only JPG,JPEG &amp; PNG files)</label>
+                                            <div class="input-group image_div">
+                                                <div class="custom-file">             
+                                                    <input type="file" class="custom-file-input" id="image" name="image">
+                                                    <label class="custom-file-label" for="image">Choose file</label>
+                                                </div>              
                                             </div>
                                         </div>
                                     </div>

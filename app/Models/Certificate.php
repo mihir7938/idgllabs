@@ -38,6 +38,8 @@ class Certificate extends Model
         'identification',
         'image',
         'qr_code',
+        'print_format',
+        'image_format',
         'status',
     ];
 

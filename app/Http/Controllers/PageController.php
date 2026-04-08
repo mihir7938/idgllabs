@@ -384,6 +384,8 @@ class PageController extends Controller
         $qr_code = \QrCode::format('png')->size(290)->margin(0)->generate($qr_img, $qr_code_path);
         $data['qr_code'] = '/qr_code/'.$summary_no.'.png';
         $data['status'] = $request->active;
+        $data['print_format'] = $request->print_format;
+        $data['image_format'] = $request->image_format;
         $certificate_data = $this->certificateService->create($data);
         $certificate_id = $certificate_data->id;
         if($request->has('shape_id')){
@@ -467,6 +469,8 @@ class PageController extends Controller
                 $filename = $this->imageService->uploadFile($request->image, "assets/certificates");
                 $data['image'] = '/certificates/'.$filename;
             }
+            $data['print_format'] = $request->print_format;
+            $data['image_format'] = $request->image_format;
             $data['status'] = $request->active;
             $this->certificateService->update($certificate, $data);
             CertificateShape::where('certificate_id', $certificate->id)->delete();

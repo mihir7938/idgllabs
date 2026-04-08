@@ -228,18 +228,21 @@
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="image">Image (allowed only JPG,JPEG &amp; PNG files)</label>
-                                            <div class="input-group image_div">
-                                                <div class="custom-file">             
-                                                    <input type="file" class="custom-file-input" id="image" name="image">
-                                                    <label class="custom-file-label" for="image">Choose file</label>
-                                                </div>              
-                                            </div>
-                                            @if($certificate->image)
-                                                <a href="{{asset('assets/'.$certificate->image)}}" data-toggle="lightbox" data-gallery="gallery1">
-                                                    <img src="{{asset('assets/'.$certificate->image)}}" class="mt-2 d-block" width="150px" />
-                                                </a>
-                                            @endif
+                                            <label for="image_format">Image Format</label>
+                                            <select id="image_format" name="image_format" class="form-control">
+                                                <option value="square" @if($certificate->image_format == "square") selected @endif>Square</option>
+                                                <option value="vertical_rectangle" @if($certificate->image_format == "vertical_rectangle") selected @endif>Vertical Rectangle</option>
+                                                <option value="horizontal_rectangle" @if($certificate->image_format == "horizontal_rectangle") selected @endif>Horizontal Rectangle</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="print_format">Print Format</label>
+                                            <select id="print_format" name="print_format" class="form-control">
+                                                <option value="format_1" @if($certificate->print_format == "format_1") selected @endif>Format 1</option>
+                                                <option value="format_2" @if($certificate->print_format == "format_2") selected @endif>Format 2</option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -252,6 +255,24 @@
                                                 <input type="radio" id="no" name="active" value="0" @if($certificate->status == 0) checked @endif>
                                                 <label for="no">No</label>
                                             </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="image">Image (allowed only JPG,JPEG &amp; PNG files)</label>
+                                            <div class="input-group image_div">
+                                                <div class="custom-file">             
+                                                    <input type="file" class="custom-file-input" id="image" name="image">
+                                                    <label class="custom-file-label" for="image">Choose file</label>
+                                                </div>              
+                                            </div>
+                                            @if($certificate->image)
+                                                <a href="{{asset('assets/'.$certificate->image)}}" data-toggle="lightbox" data-gallery="gallery1">
+                                                    <img src="{{asset('assets/'.$certificate->image)}}" class="mt-2 d-block" width="150px" />
+                                                </a>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
