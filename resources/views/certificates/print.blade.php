@@ -59,6 +59,9 @@
                 margin-top: 5px;
                 width: 125px !important;
             }
+            .print-body .image_hoz img {
+                height: 55px !important;
+            }
             .print-body .image_ver {
                 width: 50px !important;
             }
@@ -154,6 +157,9 @@
         }
         .print-body .image_hoz {
             width: 240px;
+        }
+        .print-body .image_hoz img {
+            height: 110px;
         }
         .print-body .image_ver {
             width: 110px;
