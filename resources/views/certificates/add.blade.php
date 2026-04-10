@@ -169,9 +169,9 @@
                                         <div class="form-group">
                                             <label for="image_format">Image Format</label>
                                             <select id="image_format" name="image_format" class="form-control">
-                                                <option value="square">Square</option>
-                                                <option value="vertical_rectangle">Vertical Rectangle</option>
-                                                <option value="horizontal_rectangle">Horizontal Rectangle</option>
+                                                <option value="square">Square (330px x 330px)</option>
+                                                <option value="vertical_rectangle">Vertical Rectangle (330px x 400px)</option>
+                                                <option value="horizontal_rectangle">Horizontal Rectangle (500px x 220px)</option>
                                             </select>
                                         </div>
                                     </div>

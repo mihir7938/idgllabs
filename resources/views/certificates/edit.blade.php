@@ -230,9 +230,9 @@
                                         <div class="form-group">
                                             <label for="image_format">Image Format</label>
                                             <select id="image_format" name="image_format" class="form-control">
-                                                <option value="square" @if($certificate->image_format == "square") selected @endif>Square</option>
-                                                <option value="vertical_rectangle" @if($certificate->image_format == "vertical_rectangle") selected @endif>Vertical Rectangle</option>
-                                                <option value="horizontal_rectangle" @if($certificate->image_format == "horizontal_rectangle") selected @endif>Horizontal Rectangle</option>
+                                                <option value="square" @if($certificate->image_format == "square") selected @endif>Square (330px x 330px)</option>
+                                                <option value="vertical_rectangle" @if($certificate->image_format == "vertical_rectangle") selected @endif>Vertical Rectangle (330px x 400px)</option>
+                                                <option value="horizontal_rectangle" @if($certificate->image_format == "horizontal_rectangle") selected @endif>Horizontal Rectangle (500px x 220px)</option>
                                             </select>
                                         </div>
                                     </div>
