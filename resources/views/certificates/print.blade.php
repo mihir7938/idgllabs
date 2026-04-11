@@ -14,17 +14,17 @@
                 font-size: 0.8rem;
             }
             .print-start {
-                margin-top: 216px !important;
+                margin-top: 228px !important;
             }
             .print-container { 
                 width: 325px;
                 height: 204px;
                 padding: 12px !important;
-                border: 1px solid #ddd !important;
                 margin-top: 0 !important;
-                margin-bottom: 95px !important;
-                margin-left: 0 !important;
+                margin-bottom: 78px !important;
+                margin-left: -68px !important;
                 margin-right: 0 !important;
+                box-shadow: none !important;
                 page-break-inside: avoid !important;
             }
             .print-header img {
