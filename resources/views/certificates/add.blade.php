@@ -154,7 +154,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="comment">Comments</label>
-                                            <textarea class="form-control" id="comment" name="comment" rows="4" cols="50" placeholder="Comments"><p>grading & identification of origin as mounting permits</p></textarea>
+                                            <textarea class="form-control" id="comment" name="comment" rows="4" cols="50" placeholder="Comments"><p>Graded as mounting permits</p></textarea>
                                         </div>
                                     </div>
                                     <div class="col-md-12">

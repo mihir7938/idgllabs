@@ -9,13 +9,13 @@
             </ol>
             <div class="carousel-inner" role="listbox">
                 <div class="carousel-item active">
-                    <img src="img/slide-1.png" class="img-fluid" alt="slide-1">
+                    <img src="img/slide-1.jpeg" class="img-fluid" alt="slide-1">
                 </div>
                 <div class="carousel-item">
-                    <img src="img/slide-2.png" class="img-fluid" alt="slide-2">
+                    <img src="img/slide-2.jpeg" class="img-fluid" alt="slide-2">
                 </div>
                 <div class="carousel-item">
-                    <img src="img/slide-3.png" class="img-fluid" alt="slide-3">
+                    <img src="img/slide-3.jpeg" class="img-fluid" alt="slide-3">
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselDesktop" data-bs-slide="prev">
@@ -30,11 +30,6 @@
     </div>
     <div class="carousel-header mobile-block">
         <div id="carouselMobile" class="carousel slide" data-bs-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-bs-target="#carouselMobile" data-bs-slide-to="0" class="active"></li>
-                <li data-bs-target="#carouselMobile" data-bs-slide-to="1"></li>
-                <li data-bs-target="#carouselMobile" data-bs-slide-to="2"></li>
-            </ol>
             <div class="carousel-inner" role="listbox">
                 <div class="carousel-item active">
                     <img src="img/mob-1.png" class="img-fluid d-block w-100" alt="slide-1">
@@ -44,6 +39,9 @@
                 </div>
                 <div class="carousel-item">
                     <img src="img/mob-3.png" class="img-fluid d-block w-100" alt="slide-3">
+                </div>
+                <div class="carousel-item">
+                    <img src="img/mob-4.png" class="img-fluid d-block w-100" alt="slide-4">
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselMobile" data-bs-slide="prev">

@@ -14,6 +14,7 @@ use App\Models\CertificateShape;
 use App\Models\CertificateColor;
 use App\Models\CertificateClarity;
 use App\Models\Contact;
+use App\Models\Role;
 use DataTables;
 use Carbon;
 use App\Exports\CertificatesExport;
@@ -196,8 +197,12 @@ class PageController extends Controller
                 'origin',
                 'qr_code',
                 'status',
-                'created_at'
+                'created_at',
+                'user_id'
             );
+        if (Auth::user()->role_id == Role::USER_ROLE_ID) {
+            $data->where('user_id', Auth::user()->id);
+        }
         if ($request->start_date && $request->end_date) {
             $start = \Carbon\Carbon::createFromFormat('d/m/Y', $request->start_date)->format('Y-m-d');
             $end = \Carbon\Carbon::createFromFormat('d/m/Y', $request->end_date)->format('Y-m-d');
@@ -247,6 +252,9 @@ class PageController extends Controller
                             </a></div>';
                     return $btn;
                 })
+                ->addColumn('user_name', function ($row) {
+                    return $row->user->name ?? '-';
+                })
                 ->editColumn('certificate_date', function ($row) {
                     return Carbon\Carbon::parse($row->certificate_date)->format('d-m-Y');
                 })
@@ -285,6 +293,7 @@ class PageController extends Controller
         $callback = function () use ($data, $totalWeight) {
             $file = fopen('php://output', 'w');
             fputcsv($file, [
+                'Name',
                 'Summary No',
                 'Date',
                 'Company',
@@ -296,6 +305,7 @@ class PageController extends Controller
             ]);
             foreach ($data as $row) {
                 fputcsv($file, [
+                    $row->user->name,
                     $row->summary_no,
                     $row->certificate_date,
                     $row->company_name,
@@ -308,7 +318,7 @@ class PageController extends Controller
             }
             fputcsv($file, []);
             fputcsv($file, [
-                '', '', '', 'Total',
+                '', '', '', '', 'Total',
                 $totalWeight,
                 '', '', ''
             ]);
@@ -357,6 +367,7 @@ class PageController extends Controller
     {
         $data = $request->all();
         $client = $this->clientService->getClientById($request->company);
+        $data['user_id'] = Auth::user()->id;
         $data['summary_no'] = $request->summary_no;
         $data['certificate_date'] = date('Y-m-d', strtotime(strtr($request->certificate_date, '/', '-')));
         $data['client_id'] = $request->company;
@@ -517,6 +528,7 @@ class PageController extends Controller
         $branch = '1';
         $summary_no = date('dmyHis').$branch;
         $today = date('Y-m-d');
+        $newCertificate->user_id = Auth::user()->id;
         $newCertificate->summary_no = $summary_no;
         $newCertificate->certificate_date = $today;
         $qr_img = env('APP_HOME_URL').'view-report.php?rno='.$summary_no;

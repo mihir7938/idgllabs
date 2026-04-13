@@ -105,6 +105,7 @@
                                     <thead>
                                         <tr>
                                             <th width="140">Action</th>
+                                            <th>Name</th>
                                             <th>Summary No.</th>
                                             <th>Date</th>
                                             <th>Company</th>
@@ -117,7 +118,7 @@
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th colspan="5" style="text-align: right;">Total :</th>
+                                            <th colspan="6" style="text-align: right;">Total :</th>
                                             <th id="footer_total_weight"></th>
                                             <th colspan="3"></th>
                                         </tr>
@@ -239,6 +240,7 @@
            order: [[9, 'desc']],
            columns: [
                 { data: 'action', orderable:false, searchable:false },
+                { data: 'user_name', name:'user_name' },
                 { data: 'summary_no', name:'summary_no' },
                 { data: 'certificate_date', name:'certificate_date' },
                 { data: 'company_name', name:'company_name' },

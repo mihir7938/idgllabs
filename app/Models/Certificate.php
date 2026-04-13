@@ -18,6 +18,7 @@ class Certificate extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'user_id',
         'summary_no',
         'certificate_date',
         'client_id',
@@ -56,5 +57,10 @@ class Certificate extends Model
     public function clarities()
     {
         return $this->hasMany(CertificateClarity::class, 'certificate_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 }

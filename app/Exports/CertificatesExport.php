@@ -19,6 +19,7 @@ class CertificatesExport implements FromGenerator, WithHeadings
     public function headings(): array
     {
         return [
+            'Name',
             'Summary No',
             'Date',
             'Company',
@@ -34,6 +35,7 @@ class CertificatesExport implements FromGenerator, WithHeadings
     {
         foreach ($this->query->cursor() as $row) {
             yield [
+                $row->user->name,
                 $row->summary_no,
                 \Carbon\Carbon::parse($row->certificate_date)->format('d-m-Y'),
                 $row->company_name,
@@ -44,7 +46,7 @@ class CertificatesExport implements FromGenerator, WithHeadings
                 $row->status == 1 ? 'Active' : 'Inactive',
             ];
         }
-        yield ['', '', '', '', '', '', '', ''];
-        yield ['', '', '', 'Total',(float)$this->totalWeight,'', '', ''];
+        yield ['', '', '', '', '', '', '', '', ''];
+        yield ['', '', '', '', 'Total',(float)$this->totalWeight,'', '', ''];
     }
 }
