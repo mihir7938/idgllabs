@@ -90,15 +90,11 @@
                 font-size: 7px !important;
             }
         }
-        @media screen {
-            .print-body span {
-                font-size: 14px !important;
-            }
-        }
         .print-container {
-            max-width: 650px;
+            max-width: 325px;
+            height: 204px;
             margin: 20px auto;
-            padding: 24px;
+            padding: 12px;
             background: #ffffff;
             box-shadow: 0 0 20px rgba(0,0,0,0.1);
             border-radius: 10px;
@@ -110,25 +106,26 @@
             text-align: center;
         }
         .print-header img {
-            width: 70px;
+            width: 40px;
+            margin-top: -4px;
         }
         .print-header .left {
-            width: 120px;
+            width: 60px;
         }
         .print-header .right {
-            width: calc(100% - 120px);
+            width: calc(100% - 60px);
         }
         .print-header h3 {
-            font-size: 28px;
+            font-size: 16px;
             font-weight: bold;
             text-transform: uppercase;
             margin-bottom: 0px;
             color: #372E6F;
         }
         .print-body {
-            margin-top: 8px;
-            font-size: 14px;
-            line-height: 1.5;
+            margin-top: 4px;
+            font-size: 9px;
+            line-height: 1.3;
         }
         .block {
             display: flex;
@@ -140,29 +137,30 @@
             flex-wrap: wrap;
         }
         .print-body .qr_code {
-            width: 72px;
-            margin-top: -30px;
+            width: 40px;
+            margin-top: -18px;
         }
         .print-body .qr_code img {
             width: 100%;
         }
         .print-body .content {
-            width: calc(100% - 85px);
+            width: calc(100% - 45px);
         }
         .print-body p {
             margin-bottom: 0;
         }
         .print-body .image {
-            width: 110px;
+            width: 62px;
         }
         .print-body .image_hoz {
-            width: 240px;
+            margin-top: 5px;
+            width: 125px;
         }
         .print-body .image_hoz img {
-            height: 110px;
+            height: 55px;
         }
         .print-body .image_ver {
-            width: 110px;
+            width: 50px;
             display: flex;
             align-items: center;
         }
@@ -172,29 +170,34 @@
             width: 100%;
         }
         .print-body .bottom {
-            width: calc(100% - 115px);
+            width: calc(100% - 65px);
         }
         .print-body .bottom_hoz {
-            width: calc(100% - 245px);
+            width: calc(100% - 128px);
         }
         .print-body .bottom_ver {
-            width: calc(100% - 115px);
+            width: calc(100% - 53px);
         }
         .print-body label {
             font-weight: 600;
             text-transform: uppercase;
         }
         .print-body .left {
-            width: 100px;
+            width: 62px;
         }
         .print-body .center {
-            margin: 0 8px;
+            margin: 0 2px;
         }
         .print-body .right {
-            width: calc(100% - 120px);
+            width: calc(100% - 69px);
+            align-self: flex-end;
         }
         .print-body .desc {
             min-height: 32px;
+            line-height: 1.2;
+        }
+        .small {
+            font-size: 7px;
         }
     </style>
 </head>
