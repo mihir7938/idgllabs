@@ -65,7 +65,7 @@
                 </div>
                 <div class="col-lg-7 wow fadeInRight" data-wow-delay="0.3s">
                     <h5 class="sub-title pe-3">About the company</h5>
-                    <h1 class="display-5 mb-4">International Diamond & Gem Laboratory</h1>
+                    <h1 class="display-6 mb-4">International Diamond & Gem Laboratory</h1>
                     <p class="mb-4 text-justify">Authentication testing of Jewellery, loose diamonds, Synthetic diamonds, and Lab-grown Gemstones. Adding value and luxury with unique identification to your Jewellery. Having 30 years of experience & expertise in the Diamond market. Being at the front and the end of the Industry, we have contributed towards making services.</p>
                     <div class="row gy-4">
                         <div class="col-4 col-md-3">
