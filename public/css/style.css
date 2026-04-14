@@ -38,24 +38,16 @@
 .bg-primary {
     background-color: #433979 !important;
 }
-body {
-    font-family: "Baskervville",sans-serif;
-}
 h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
     color: #433979;
-    font-family: "Baskervville",sans-serif;
-}
-.navbar.navbar-light .navbar-nav .nav-link {
-    font-family: "Baskervville",sans-serif;
-}
-.btn.btn-primary {
-    font-family: "Baskervville",sans-serif !important;
 }
 .display-6 {
     text-transform: uppercase;
+    font-family: "Baskervville",sans-serif;
 }
 h3, .h3 {
     text-transform: uppercase;
+    font-family: "Baskervville",sans-serif;
 }
 .text-primary {
     color: #433979 !important;

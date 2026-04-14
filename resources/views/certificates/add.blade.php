@@ -179,8 +179,9 @@
                                         <div class="form-group">
                                             <label for="print_format">Print Format</label>
                                             <select id="print_format" name="print_format" class="form-control">
-                                                <option value="format_1">Format 1</option>
-                                                <option value="format_2">Format 2</option>
+                                                <option value="jewellery">JEWELLERY</option>
+                                                <option value="loose_di">LOOSE DI</option>
+                                                <option value="gemstones">GEMSTONES</option>
                                             </select>
                                         </div>
                                     </div>

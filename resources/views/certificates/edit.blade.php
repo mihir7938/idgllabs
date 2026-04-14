@@ -240,8 +240,9 @@
                                         <div class="form-group">
                                             <label for="print_format">Print Format</label>
                                             <select id="print_format" name="print_format" class="form-control">
-                                                <option value="format_1" @if($certificate->print_format == "format_1") selected @endif>Format 1</option>
-                                                <option value="format_2" @if($certificate->print_format == "format_2") selected @endif>Format 2</option>
+                                                <option value="jewellery" @if($certificate->print_format == "jewellery") selected @endif>JEWELLERY</option>
+                                                <option value="loose_di" @if($certificate->print_format == "loose_di") selected @endif>LOOSE DI</option>
+                                                <option value="gemstones" @if($certificate->print_format == "gemstones") selected @endif>GEMSTONES</option>
                                             </select>
                                         </div>
                                     </div>

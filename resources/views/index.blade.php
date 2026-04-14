@@ -99,7 +99,7 @@
                 <div class="sub-style">
                     <h5 class="sub-title text-primary px-3">Achievement</h5>
                 </div>
-                <h3 class="display-6 mb-4">Diamond ring listed in Guinness book of world record is certified by IDGL</h3>
+                <h3 class="display-6 mb-4">Diamond watch bracelet listed in Guinness book of world record is certified by IDGL</h3>
             </div>
             <div class="row g-4">
                 <div class="col-lg-12 wow fadeInUp" data-wow-delay="0.1s">
