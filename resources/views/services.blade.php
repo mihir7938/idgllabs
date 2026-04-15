@@ -131,7 +131,7 @@
                 </div>
                 <div class="col-xl-6 wow fadeInRight" data-wow-delay="0.7s">
                     <div class="bg-light">
-                        <img src="img/lab-grown.png" class="img-fluid w-100" alt="Laboratory grown diamond certification report">
+                        <img src="img/service-4.jpeg" class="img-fluid w-100" alt="Laboratory grown diamond certification report">
                     </div>
                 </div>
             </div>

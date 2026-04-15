@@ -152,6 +152,11 @@
         .print-body .image {
             width: 62px;
         }
+        .gemstones .print-body .image {
+            width: 62px;
+            display: flex;
+            align-items: center;
+        } 
         .print-body .image_hoz {
             margin-top: 5px;
             width: 125px;
@@ -205,102 +210,295 @@
     <div class="container">
         <div class="print-start">
             @foreach($certificates as $certificate)
-                <div class="print-container">
-                    <div class="print-header">
-                        <div class="d-flex">
-                            <div class="left">
-                                <img src="{{asset('img/card_logo.png')}}" alt="Logo">
-                            </div>
-                            <div class="right">
-                                <h3>International<br/>Diamond & Gem Laboratory</h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="print-body">
-                        <div class="block">
-                            <div class="content">
-                                <div class="d-flex">
-                                    <div class="left"><label>PARTY NAME</label></div><span class="center">:</span><div class="right">{{ $certificate->name }}</div>
+                @if($certificate->print_format == 'jewellery')
+                    <div class="print-container">
+                        <div class="print-header">
+                            <div class="d-flex">
+                                <div class="left">
+                                    <img src="{{asset('img/card_logo.png')}}" alt="Logo">
                                 </div>
-                                <div class="d-flex">
-                                    <div class="left"><label>SUMMARY NO</label></div><span class="center">:</span><div class="right"><strong>{{ $certificate->summary_no }}</strong></div>
+                                <div class="right">
+                                    <h3>International<br/>Diamond & Gem Laboratory</h3>
                                 </div>
                             </div>
-                            <div class="qr_code">
-                                @if($certificate->qr_code)
-                                    <img src="{{asset('assets/'.$certificate->qr_code)}}" alt="QR" />
-                                @endif
-                            </div>
                         </div>
-                        @php
-                            if($certificate->image_format == 'horizontal_rectangle') {
-                                $bottom_class = 'bottom_hoz';
-                                $image_class = 'image_hoz';
-                            } else if($certificate->image_format == 'vertical_rectangle') {
-                                $bottom_class = 'bottom_ver';
-                                $image_class = 'image_ver';
-                            } else {
-                                $bottom_class = 'bottom';
-                                $image_class = 'image';
-                            }
-                        @endphp
-                        @if($certificate->image_format == 'horizontal_rectangle' || $certificate->image_format == 'square')
-                            <div class="block desc">
-                                @if($certificate->description)
+                        <div class="print-body">
+                            <div class="block">
+                                <div class="content">
                                     <div class="d-flex">
-                                        <div class="left"><label>DESCRIPTION</label></div><span class="center">:</span><div class="right">{!! html_entity_decode($certificate->description) !!}</div>
+                                        <div class="left"><label>PARTY NAME</label></div><span class="center">:</span><div class="right">{{ $certificate->name }}</div>
                                     </div>
-                                @endif
+                                    <div class="d-flex">
+                                        <div class="left"><label>SUMMARY NO</label></div><span class="center">:</span><div class="right"><strong>{{ $certificate->summary_no }}</strong></div>
+                                    </div>
+                                </div>
+                                <div class="qr_code">
+                                    @if($certificate->qr_code)
+                                        <img src="{{asset('assets/'.$certificate->qr_code)}}" alt="QR" />
+                                    @endif
+                                </div>
                             </div>
-                        @endif
-                        <div class="block">
-                            <div class="{{ $bottom_class }}">
-                                @if($certificate->image_format == 'vertical_rectangle')
+                            @php
+                                if($certificate->image_format == 'horizontal_rectangle') {
+                                    $bottom_class = 'bottom_hoz';
+                                    $image_class = 'image_hoz';
+                                } else if($certificate->image_format == 'vertical_rectangle') {
+                                    $bottom_class = 'bottom_ver';
+                                    $image_class = 'image_ver';
+                                } else {
+                                    $bottom_class = 'bottom';
+                                    $image_class = 'image';
+                                }
+                            @endphp
+                            @if($certificate->image_format == 'horizontal_rectangle' || $certificate->image_format == 'square')
+                                <div class="block desc">
                                     @if($certificate->description)
                                         <div class="d-flex">
                                             <div class="left"><label>DESCRIPTION</label></div><span class="center">:</span><div class="right">{!! html_entity_decode($certificate->description) !!}</div>
                                         </div>
                                     @endif
-                                @endif
-                                @if($certificate->shapes_data)
-                                    <div class="d-flex">
-                                        <div class="left"><label>SHAPE/CUT</label></div><span class="center">:</span><div class="right">{{ $certificate->shapes_data }}</div>
-                                    </div>
-                                @endif
-                                @if($certificate->weight)
-                                    <div class="d-flex">
-                                        <div class="left"><label>TOTAL EST WT</label></div><span class="center">:</span><div class="right">{{ $certificate->weight }} carats</div>
-                                    </div>
-                                @endif
-                                @if($certificate->colors_data)
-                                    <div class="d-flex">
-                                        <div class="left"><label>COLOUR</label></div><span class="center">:</span><div class="right"><strong>{{ $certificate->colors_data }}</strong></div>
-                                    </div>
-                                @endif
-                                @if($certificate->clarities_data)
-                                    <div class="d-flex">
-                                        <div class="left"><label>CLARITY</label></div><span class="center">:</span><div class="right"><strong>{{ $certificate->clarities_data }}</strong></div>
-                                    </div>
-                                @endif
-                                @if($certificate->identification)
-                                    <div class="d-flex">
-                                        <div class="left"><label>Identification</label></div><span class="center">:</span><div class="right">{!! html_entity_decode($certificate->identification) !!}</div>
-                                    </div>
-                                @endif
-                                @if($certificate->comment)
-                                    <div class="d-flex">
-                                        <div class="left"><label>COMMENTS</label></div><span class="center">:</span><div class="right small">{!! html_entity_decode($certificate->comment) !!}</div>
-                                    </div>
-                                @endif
-                            </div>
-                            <div class="{{ $image_class }}">
-                                @if($certificate->image)
-                                    <img src="{{asset('assets/'.$certificate->image)}}" alt="Certificate" />
-                                @endif
+                                </div>
+                            @endif
+                            <div class="block">
+                                <div class="{{ $bottom_class }}">
+                                    @if($certificate->image_format == 'vertical_rectangle')
+                                        @if($certificate->description)
+                                            <div class="d-flex">
+                                                <div class="left"><label>DESCRIPTION</label></div><span class="center">:</span><div class="right">{!! html_entity_decode($certificate->description) !!}</div>
+                                            </div>
+                                        @endif
+                                    @endif
+                                    @if($certificate->shapes_data)
+                                        <div class="d-flex">
+                                            <div class="left"><label>SHAPE/CUT</label></div><span class="center">:</span><div class="right">{{ $certificate->shapes_data }}</div>
+                                        </div>
+                                    @endif
+                                    @if($certificate->weight)
+                                        <div class="d-flex">
+                                            <div class="left"><label>TOTAL EST WT</label></div><span class="center">:</span><div class="right">{{ $certificate->weight }} carats</div>
+                                        </div>
+                                    @endif
+                                    @if($certificate->colors_data)
+                                        <div class="d-flex">
+                                            <div class="left"><label>COLOUR</label></div><span class="center">:</span><div class="right"><strong>{{ $certificate->colors_data }}</strong></div>
+                                        </div>
+                                    @endif
+                                    @if($certificate->clarities_data)
+                                        <div class="d-flex">
+                                            <div class="left"><label>CLARITY</label></div><span class="center">:</span><div class="right"><strong>{{ $certificate->clarities_data }}</strong></div>
+                                        </div>
+                                    @endif
+                                    @if($certificate->identification)
+                                        <div class="d-flex">
+                                            <div class="left"><label>Identification</label></div><span class="center">:</span><div class="right">{!! html_entity_decode($certificate->identification) !!}</div>
+                                        </div>
+                                    @endif
+                                    @if($certificate->comment)
+                                        <div class="d-flex">
+                                            <div class="left"><label>COMMENTS</label></div><span class="center">:</span><div class="right small">{!! html_entity_decode($certificate->comment) !!}</div>
+                                        </div>
+                                    @endif
+                                </div>
+                                <div class="{{ $image_class }}">
+                                    @if($certificate->image)
+                                        <img src="{{asset('assets/'.$certificate->image)}}" alt="Certificate" />
+                                    @endif
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                @elseif($certificate->print_format == 'loose_di')
+                    <div class="print-container">
+                        <div class="print-header">
+                            <div class="d-flex">
+                                <div class="left">
+                                    <img src="{{asset('img/card_logo.png')}}" alt="Logo">
+                                </div>
+                                <div class="right">
+                                    <h3>International<br/>Diamond & Gem Laboratory</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="print-body">
+                            <div class="block">
+                                <div class="content">
+                                    <div class="d-flex">
+                                        <div class="left"><label>PARTY NAME</label></div><span class="center">:</span><div class="right">{{ $certificate->name }}</div>
+                                    </div>
+                                    <div class="d-flex">
+                                        <div class="left"><label>SUMMARY NO</label></div><span class="center">:</span><div class="right"><strong>{{ $certificate->summary_no }}</strong></div>
+                                    </div>
+                                </div>
+                                <div class="qr_code">
+                                    @if($certificate->qr_code)
+                                        <img src="{{asset('assets/'.$certificate->qr_code)}}" alt="QR" />
+                                    @endif
+                                </div>
+                            </div>
+                            @php
+                                if($certificate->image_format == 'horizontal_rectangle') {
+                                    $bottom_class = 'bottom_hoz';
+                                    $image_class = 'image_hoz';
+                                } else if($certificate->image_format == 'vertical_rectangle') {
+                                    $bottom_class = 'bottom_ver';
+                                    $image_class = 'image_ver';
+                                } else {
+                                    $bottom_class = 'bottom';
+                                    $image_class = 'image';
+                                }
+                            @endphp
+                            @if($certificate->image_format == 'horizontal_rectangle' || $certificate->image_format == 'square')
+                                <div class="block desc">
+                                    @if($certificate->description)
+                                        <div class="d-flex">
+                                            <div class="left"><label>DESCRIPTION</label></div><span class="center">:</span><div class="right">{!! html_entity_decode($certificate->description) !!}</div>
+                                        </div>
+                                    @endif
+                                </div>
+                            @endif
+                            <div class="block">
+                                <div class="{{ $bottom_class }}">
+                                    @if($certificate->image_format == 'vertical_rectangle')
+                                        @if($certificate->description)
+                                            <div class="d-flex">
+                                                <div class="left"><label>DESCRIPTION</label></div><span class="center">:</span><div class="right">{!! html_entity_decode($certificate->description) !!}</div>
+                                            </div>
+                                        @endif
+                                    @endif
+                                    @if($certificate->shapes_data)
+                                        <div class="d-flex">
+                                            <div class="left"><label>SHAPE/CUT</label></div><span class="center">:</span><div class="right">{{ $certificate->shapes_data }}</div>
+                                        </div>
+                                    @endif
+                                    @if($certificate->weight)
+                                        <div class="d-flex">
+                                            <div class="left"><label>TOTAL EST WT</label></div><span class="center">:</span><div class="right">{{ $certificate->weight }} carats</div>
+                                        </div>
+                                    @endif
+                                    @if($certificate->colors_data)
+                                        <div class="d-flex">
+                                            <div class="left"><label>COLOUR</label></div><span class="center">:</span><div class="right"><strong>{{ $certificate->colors_data }}</strong></div>
+                                        </div>
+                                    @endif
+                                    @if($certificate->clarities_data)
+                                        <div class="d-flex">
+                                            <div class="left"><label>CLARITY</label></div><span class="center">:</span><div class="right"><strong>{{ $certificate->clarities_data }}</strong></div>
+                                        </div>
+                                    @endif
+                                    @if($certificate->identification)
+                                        <div class="d-flex">
+                                            <div class="left"><label>Identification</label></div><span class="center">:</span><div class="right">{!! html_entity_decode($certificate->identification) !!}</div>
+                                        </div>
+                                    @endif
+                                    @if($certificate->comment)
+                                        <div class="d-flex">
+                                            <div class="left"><label>COMMENTS</label></div><span class="center">:</span><div class="right small">{!! html_entity_decode($certificate->comment) !!}</div>
+                                        </div>
+                                    @endif
+                                </div>
+                                <div class="{{ $image_class }}">
+                                    @if($certificate->image)
+                                        <img src="{{asset('assets/'.$certificate->image)}}" alt="Certificate" />
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @elseif($certificate->print_format == 'gemstones')
+                    <div class="print-container gemstones">
+                        <div class="print-header">
+                            <div class="d-flex">
+                                <div class="left">
+                                    <img src="{{asset('img/card_logo.png')}}" alt="Logo">
+                                </div>
+                                <div class="right">
+                                    <h3>International<br/>Diamond & Gem Laboratory</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="print-body">
+                            <div class="block">
+                                <div class="content">
+                                    <div class="d-flex">
+                                        <div class="left"><label>PARTY NAME</label></div><span class="center">:</span><div class="right">{{ $certificate->name }}</div>
+                                    </div>
+                                    <div class="d-flex">
+                                        <div class="left"><label>SUMMARY NO</label></div><span class="center">:</span><div class="right"><strong>{{ $certificate->summary_no }}</strong></div>
+                                    </div>
+                                    <div class="d-flex">
+                                        <div class="left"><label>WIEGHT</label></div><span class="center">:</span><div class="right">{{ $certificate->weight }} carats</div>
+                                    </div>
+                                </div>
+                                <div class="qr_code">
+                                    @if($certificate->qr_code)
+                                        <img src="{{asset('assets/'.$certificate->qr_code)}}" alt="QR" />
+                                    @endif
+                                </div>
+                            </div>
+                            @php
+                                if($certificate->image_format == 'horizontal_rectangle') {
+                                    $bottom_class = 'bottom_hoz';
+                                    $image_class = 'image_hoz';
+                                } else if($certificate->image_format == 'vertical_rectangle') {
+                                    $bottom_class = 'bottom_ver';
+                                    $image_class = 'image_ver';
+                                } else {
+                                    $bottom_class = 'bottom';
+                                    $image_class = 'image';
+                                }
+                            @endphp
+                            <div class="block">
+                                <div class="{{ $bottom_class }}">
+                                    @if($certificate->colors_data)
+                                        <div class="d-flex">
+                                            <div class="left"><label>COLOUR</label></div><span class="center">:</span><div class="right">{{ $certificate->colors_data }}</div>
+                                        </div>
+                                    @endif
+                                    @if($certificate->shapes_data)
+                                        <div class="d-flex">
+                                            <div class="left"><label>SHAPE</label></div><span class="center">:</span><div class="right">{{ $certificate->shapes_data }}</div>
+                                        </div>
+                                    @endif
+                                    @if($certificate->measure)
+                                        <div class="d-flex">
+                                            <div class="left"><label>MEASUREMENT</label></div><span class="center">:</span><div class="right">{{ $certificate->measure }}</div>
+                                        </div>
+                                    @endif
+                                    @if($certificate->refractive_index)
+                                        <div class="d-flex">
+                                            <div class="left"><label class="small">REFRACTIVE INDEX</label></div><span class="center">:</span><div class="right">{{ $certificate->refractive_index }}</div>
+                                        </div>
+                                    @endif
+                                    @if($certificate->specific_gravity)
+                                        <div class="d-flex">
+                                            <div class="left"><label class="small">SPECIFIC GRAVITY</label></div><span class="center">:</span><div class="right">{{ $certificate->specific_gravity }}</div>
+                                        </div>
+                                    @endif
+                                    @if($certificate->hardness)
+                                        <div class="d-flex">
+                                            <div class="left"><label>HARDNESS</label></div><span class="center">:</span><div class="right">{{ $certificate->hardness }}</div>
+                                        </div>
+                                    @endif
+                                    @if($certificate->identification)
+                                        <div class="d-flex">
+                                            <div class="left"><label>IDENTIFICATION</label></div><span class="center">:</span><div class="right">{!! html_entity_decode($certificate->identification) !!}</div>
+                                        </div>
+                                    @endif
+                                    @if($certificate->comment)
+                                        <div class="d-flex">
+                                            <div class="left"><label>COMMENTS</label></div><span class="center">:</span><div class="right small">{!! html_entity_decode($certificate->comment) !!}</div>
+                                        </div>
+                                    @endif
+                                </div>
+                                <div class="{{ $image_class }}">
+                                    @if($certificate->image)
+                                        <img src="{{asset('assets/'.$certificate->image)}}" alt="Certificate" />
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endif
             @endforeach
         </div>
         <div class="text-center p-4 no-print">
