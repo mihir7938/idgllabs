@@ -420,7 +420,7 @@
                                         <div class="left"><label>SUMMARY NO</label></div><span class="center">:</span><div class="right"><strong>{{ $certificate->summary_no }}</strong></div>
                                     </div>
                                     <div class="d-flex">
-                                        <div class="left"><label>WIEGHT</label></div><span class="center">:</span><div class="right">{{ $certificate->weight }} carats</div>
+                                        <div class="left"><label>WEIGHT</label></div><span class="center">:</span><div class="right">{{ $certificate->weight }} carats</div>
                                     </div>
                                 </div>
                                 <div class="qr_code">
