@@ -133,6 +133,12 @@ label.error {
   margin-left: 10px;
   margin-bottom: .5rem;
 }
+.dataTables_wrapper div.print-btn-container-bottom {
+  margin-left: 10px;
+}
+.card div.dataTables_wrapper div.dataTables_info {
+  padding-top: 0;
+}
 #booking_details {
   display: none;
 }

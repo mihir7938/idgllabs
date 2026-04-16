@@ -159,7 +159,7 @@
                 alert('You can select only 2 certificates');
             }
         });
-        $(document).on('click', '#print_selected', function() {
+        $(document).on('click', '.print_selected', function() {
             let ids = [];
             $('.print_checkbox:checked').each(function() {
                 ids.push($(this).val());
@@ -199,7 +199,8 @@
                     return json.data;
                 }
            },
-           dom: '<"row"<"col-md-6 d-flex align-items-center"lB<"print-btn-container">><"col-md-6 text-end"f>>rtip',
+           dom: '<"row"<"col-md-6 d-flex align-items-center"lB<"print-btn-container">><"col-md-6 text-end"f>>rt' +
+                '<"row"<"col-md-6 d-flex align-items-center"i<"print-btn-container-bottom ms-2">><"col-md-6 text-end"p>>',
            buttons: [
                 {
                     text: 'CSV',
@@ -233,9 +234,9 @@
                 }
            ],
            initComplete: function () {
-                $('.print-btn-container').html(
-                    '<button id="print_selected" class="btn btn-primary ms-2">Print</button>'
-                );
+                var printBtn = '<button class="btn btn-primary ms-2 print_selected">Print</button>';
+                $('.print-btn-container').html(printBtn);
+                $('.print-btn-container-bottom').html(printBtn);
            },
            order: [[9, 'desc']],
            columns: [
