@@ -156,7 +156,12 @@
             width: 62px;
             display: flex;
             align-items: center;
-        } 
+        }
+        .loosedi .print-body .image {
+            width: 62px;
+            display: flex;
+            align-items: center;
+        }
         .print-body .image_hoz {
             margin-top: 5px;
             width: 125px;
@@ -308,7 +313,7 @@
                         </div>
                     </div>
                 @elseif($certificate->print_format == 'loose_di')
-                    <div class="print-container">
+                    <div class="print-container loosedi">
                         <div class="print-header">
                             <div class="d-flex">
                                 <div class="left">
@@ -328,6 +333,11 @@
                                     <div class="d-flex">
                                         <div class="left"><label>SUMMARY NO</label></div><span class="center">:</span><div class="right"><strong>{{ $certificate->summary_no }}</strong></div>
                                     </div>
+                                    @if($certificate->shapes_data)
+                                        <div class="d-flex">
+                                            <div class="left"><label>SHAPE/CUT</label></div><span class="center">:</span><div class="right">{{ $certificate->shapes_data }}</div>
+                                        </div>
+                                    @endif
                                 </div>
                                 <div class="qr_code">
                                     @if($certificate->qr_code)
@@ -347,29 +357,8 @@
                                     $image_class = 'image';
                                 }
                             @endphp
-                            @if($certificate->image_format == 'horizontal_rectangle' || $certificate->image_format == 'square')
-                                <div class="block desc">
-                                    @if($certificate->description)
-                                        <div class="d-flex">
-                                            <div class="left"><label>DESCRIPTION</label></div><span class="center">:</span><div class="right">{!! html_entity_decode($certificate->description) !!}</div>
-                                        </div>
-                                    @endif
-                                </div>
-                            @endif
                             <div class="block">
                                 <div class="{{ $bottom_class }}">
-                                    @if($certificate->image_format == 'vertical_rectangle')
-                                        @if($certificate->description)
-                                            <div class="d-flex">
-                                                <div class="left"><label>DESCRIPTION</label></div><span class="center">:</span><div class="right">{!! html_entity_decode($certificate->description) !!}</div>
-                                            </div>
-                                        @endif
-                                    @endif
-                                    @if($certificate->shapes_data)
-                                        <div class="d-flex">
-                                            <div class="left"><label>SHAPE/CUT</label></div><span class="center">:</span><div class="right">{{ $certificate->shapes_data }}</div>
-                                        </div>
-                                    @endif
                                     @if($certificate->weight)
                                         <div class="d-flex">
                                             <div class="left"><label>TOTAL EST WT</label></div><span class="center">:</span><div class="right">{{ $certificate->weight }} carats</div>
@@ -385,9 +374,14 @@
                                             <div class="left"><label>CLARITY</label></div><span class="center">:</span><div class="right"><strong>{{ $certificate->clarities_data }}</strong></div>
                                         </div>
                                     @endif
+                                    @if($certificate->measure)
+                                        <div class="d-flex">
+                                            <div class="left"><label>MEASUREMENT</label></div><span class="center">:</span><div class="right">{{ $certificate->measure }}</div>
+                                        </div>
+                                    @endif
                                     @if($certificate->identification)
                                         <div class="d-flex">
-                                            <div class="left"><label>Identification</label></div><span class="center">:</span><div class="right">{!! html_entity_decode($certificate->identification) !!}</div>
+                                            <div class="left"><label>IDENTIFICATION</label></div><span class="center">:</span><div class="right"><strong>{!! html_entity_decode($certificate->identification) !!}</strong></div>
                                         </div>
                                     @endif
                                     @if($certificate->comment)
