@@ -9,13 +9,13 @@
             </ol>
             <div class="carousel-inner" role="listbox">
                 <div class="carousel-item active">
-                    <img src="img/slide-1.jpeg" class="img-fluid" alt="slide-1">
+                    <img src="img/slide-1.png" class="img-fluid" alt="slide-1">
                 </div>
                 <div class="carousel-item">
-                    <img src="img/slide-2.jpeg" class="img-fluid" alt="slide-2">
+                    <img src="img/slide-2.png" class="img-fluid" alt="slide-2">
                 </div>
                 <div class="carousel-item">
-                    <img src="img/slide-3.jpeg" class="img-fluid" alt="slide-3">
+                    <img src="img/slide-3.png" class="img-fluid" alt="slide-3">
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselDesktop" data-bs-slide="prev">
