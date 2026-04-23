@@ -33,20 +33,23 @@ Complaints or claims in any way related to this report will be accepted solely a
 of the idgl management All matters, disputes or references to arbitration arising out of this report shall only be subject to the jurisdiction of the local courts of the place from where this report is issued.</li>
                         <li>This report must not be referred to as a guarantee, valuation or appraisal.
 An idgl report is intended to certify the characteristics of the gemstone(s)/jewelry/metal. These…
-Each item submitted to idgl shall at all times remain at the risk of the Client. The Client
-</li>                                   
+Each item submitted to idgl shall at all times remain at the risk of the Client.
+</li>
+                        <li>The report is provided on the request of the customers and / or the Gem / Studded Jewellery. Neither the client nor the purchaser of the Gem / Jewellery, shall regard this report as an appraisal / guarantee / warranty. IDGL operates as an independent laboratory and has no financial interest in the sale of Gems / Diamonds/ or Jewellery items</li>
+                        <li>The results shall be governed by the Judicial systems and all matters, disputes or references to the arbitration shall be subject to the SURAT jurisdiction .</li>        
+                        <li>IDGL RESERVES THE RIGHT TO DENY ITS SERVICES TO ANY PERSON (INCLUDING WITHOUT LIMITATION ITS EXISTING VENDORS, CUSTOMERS AND AFFILIATES), AT ANY TIME AND MAY CHOOSE TO DO SO AT ITS SOLE DISCRETION, WITHOUT PROVIDING ANY REASON FOR SUCH REFUSAL.</li>
                    </ul>
                    <p>Privacy - Terms<br />
-                   PAYMENT FOR SGL SERVICES</p>
+                   PAYMENT FOR IDGL</p>
                    <p>The Client shall pay idgl based on an invoice issued according to the order form or other specific document or agreement identifying the Service and applicable fee for the Service. Idgl may choose to withhold the Item in the event that the Client fails to pay the fee, or any part thereof, until the payment is duly settled.</p>
-                   <h4>TRADE NAME AND PROPRIETARY RIGHTS</h4>
+                   {{--<h4>TRADE NAME AND PROPRIETARY RIGHTS</h4>
                    <p>All of idgl reports, copyrights, trade names, service marks and trademarks shall belong only to idgl as its sole and exclusive property and shall not be reproduced by anyone without idgl consent. For the avoidance of doubt, Client undertakes that all the aforesaid proprietary items shall not be used, either in whole or in part, for any promotion, advertisement or selling activitie…</p>
                    <p>Any matter not stipulated in these Terms and Conditions shall be resolved through consultation between the Client and IDGL.</p>
                    <ul class="ls-disc tc-list">
                         <li>These General Terms and Conditions shall become effective on the date they are published on
 IDGL website. IDGL may change, revise, amend or modify these Terms and Conditions from time to time. IDGL shall publish such changes, revisions, amendments or modifications on its official website, which shall then become effective immediately upon announcement without any further action by any party.</li>
                         <li>IDGL shall be under no liability to perform any of its obligations towards the Client if and to the extent that the failure is caused by act of God, environmental restriction, condition or control or by reason of any act done or not done pursuan…</li>
-                    </ul>
+                    </ul>--}}
                 </div>
             </div>
         </div>

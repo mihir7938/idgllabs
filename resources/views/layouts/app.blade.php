@@ -99,7 +99,7 @@
                 <div class="col-md-6 col-lg-6 col-xl-4">
                     <div class="footer-item d-flex flex-column">
                         <h4 class="text-secondary mb-4">Contact Info</h4>
-                        <a href="javascript:void(0);"><i class="fa fa-map-marker-alt me-2"></i> 6/860, Chhaparia Sheri, Mahidharpura, SURAT-3. (INDIA)</a>
+                        <a href="https://maps.app.goo.gl/mzRTuESpcz8YAP6t8" target="_blank"><i class="fa fa-map-marker-alt me-2"></i> 6/860, Chhaparia Sheri, Mahidharpura, SURAT-3. (INDIA)</a>
                         <a href="javascript:void(0);"><i class="fa fa-map-marker-alt me-2"></i> 578 Ridge Road, North Arlington NJ 07031, United States</a>
                         <a href="mailto:idglinternationallab@gmail.com"><i class="fas fa-envelope me-2"></i> idglinternationallab@gmail.com</a>
                         <a href="tel:+919313385613"><i class="fas fa-phone me-2"></i> +91 9313385613</a>

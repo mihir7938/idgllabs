@@ -126,8 +126,7 @@
                 <div class="row g-4 justify-content-center">
                     <div class="col-12 pt-3 wow zoomIn" data-wow-delay="0.1s">
                         <div class="rounded h-100">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3719.7887024693255!2d72.83216581540398!3d21.20055118726629!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04f1155f275ad%3A0xedda7b5ca5e1af1d!2sTAKSH%20JEWELLERS!5e0!3m2!1sen!2sin!4v1662985077481!5m2!1sen!2sin" class="rounded w-100" 
-                            style="height: 450px;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3719.7872179201186!2d72.82907217197824!3d21.200610138762496!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04fa679d4ad3b%3A0x7e4f06d554c41a54!2sInternational%20Diamond%20%26%20Gem%20Laboratory!5e0!3m2!1sen!2sin!4v1776935510641!5m2!1sen!2sin" class="rounded w-100" style="height: 450px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                     </div>
                 </div>

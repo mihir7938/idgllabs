@@ -131,7 +131,7 @@
                 </div>
                 <div class="col-xl-6 wow fadeInRight" data-wow-delay="0.7s">
                     <div class="bg-light">
-                        <img src="img/service-4.jpeg" class="img-fluid w-100" alt="Laboratory grown diamond certification report">
+                        <img src="img/lab-grown.png" class="img-fluid w-100" alt="Laboratory grown diamond certification report">
                     </div>
                 </div>
             </div>
@@ -144,7 +144,7 @@
                 <div class="col-xl-6 wow fadeInRight" data-wow-delay="0.9s">
                     <h3 class="mb-4">Gemstones Identification Report</h3>
                     <p class="mb-4">Ensure authenticity, quality, and trust with our professional gemstone identification services. Our reports provide accurate analysis and detailed insights into the characteristics of your precious stones.</p>
-                    <p class="mb-4">A Gemstone Identification Report is a certified document that verifies the identity and properties of a gemstone. Using advanced gemological techniques, each stone is carefully examined to determine its origin, composition, and quality parameters.</p>
+                    <p class="mb-4">A Gemstone Identification Report is a certified document that verifies the identity and properties of a gemstone. Using advanced gemological techniques, each stone is carefully examined to determine its composition, and quality parameters.</p>
                     <p class="mb-4">Certification ensures that you are buying or selling genuine gemstones with verified quality. It builds trust, enhances value, and provides confidence in every transaction.</p>
                 </div>
             </div>
@@ -164,11 +164,11 @@
             <div class="row g-5 mt-4">
                 <div class="col-xl-6 wow fadeInLeft" data-wow-delay="0.3s">
                     <div class="bg-light">
-                        <img src="img/service-7.png" class="img-fluid w-100" alt="Moissonite certification report">
+                        <img src="img/service-7.png" class="img-fluid w-100" alt="Moissanite certification report">
                     </div>
                 </div>
                 <div class="col-xl-6 wow fadeInRight" data-wow-delay="0.3s">
-                    <h3 class="mb-4">Moissonite certification report</h3>
+                    <h3 class="mb-4">Moissanite certification report</h3>
                     <p class="mb-4">Verify the brilliance and authenticity of your moissanite with our trusted certification reports. We ensure precise identification and quality analysis for complete confidence.</p>
                     <p class="mb-4">A Moissanite Certification Report is an official document that confirms the identity and characteristics of a moissanite gemstone. Using advanced gemological testing, we distinguish moissanite from natural diamonds and other simulants with high accuracy.</p>
                     <p class="mb-4">Moissanite is a lab-created gemstone known for its exceptional brilliance, fire, and durability. It is a popular alternative to diamonds due to its similar appearance and affordability.</p>
