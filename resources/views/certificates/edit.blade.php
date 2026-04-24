@@ -467,11 +467,7 @@
                 client_name: {
                     required: true
                 },
-                weight: {
-                    required: true
-                },
                 total_weight: {
-                    required: true,
                     number: true,
                     min: 0
                 },
@@ -486,12 +482,6 @@
                 },
                 client_name: {
                     required: "Please enter client name."
-                },
-                weight: {
-                    required: "Please enter total est weight."
-                },
-                total_weight: {
-                    required: "Please enter total weight."
                 },
                 image: {
                     extension: "Please select valid image.",

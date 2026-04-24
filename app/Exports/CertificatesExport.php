@@ -26,7 +26,6 @@ class CertificatesExport implements FromGenerator, WithHeadings
             'Client',
             'Total EST WT',
             'Refractive Index',
-            'Origin',
             'Status'
         ];
     }
@@ -42,7 +41,6 @@ class CertificatesExport implements FromGenerator, WithHeadings
                 $row->name,
                 $row->weight,
                 $row->refractive_index,
-                $row->origin,
                 $row->status == 1 ? 'Active' : 'Inactive',
             ];
         }

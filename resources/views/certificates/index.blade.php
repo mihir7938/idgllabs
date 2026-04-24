@@ -112,7 +112,6 @@
                                             <th>Client</th>
                                             <th>Total EST WT</th>
                                             <th>Refractive Index</th>
-                                            <th>Origin</th>
                                             <th>Status</th>
                                         </tr>
                                     </thead>
@@ -248,7 +247,6 @@
                 { data: 'name', name:'name' },
                 { data: 'weight', name:'weight' },
                 { data: 'refractive_index', name:'refractive_index' },
-                { data: 'origin', name:'origin' },
                 { data: 'status', name:'status', orderable:false, searchable:false },
                 { data: 'created_at', name:'created_at', visible:false }
             ]

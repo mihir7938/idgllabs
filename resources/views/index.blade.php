@@ -40,9 +40,6 @@
                 <div class="carousel-item">
                     <img src="img/mob-3.png" class="img-fluid d-block w-100" alt="slide-3">
                 </div>
-                <div class="carousel-item">
-                    <img src="img/mob-4.png" class="img-fluid d-block w-100" alt="slide-4">
-                </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselMobile" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon bg-secondary wow fadeInLeft" data-wow-delay="0.2s" aria-hidden="false"></span>

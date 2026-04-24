@@ -194,7 +194,6 @@ class PageController extends Controller
                 'name',
                 'weight',
                 'refractive_index',
-                'origin',
                 'qr_code',
                 'status',
                 'created_at',
@@ -300,7 +299,6 @@ class PageController extends Controller
                 'Client',
                 'Total EST WT',
                 'Refractive Index',
-                'Origin',
                 'Status'
             ]);
             foreach ($data as $row) {
@@ -312,7 +310,6 @@ class PageController extends Controller
                     $row->name,
                     $row->weight,
                     $row->refractive_index,
-                    $row->origin,
                     $row->status == 1 ? 'Active' : 'Inactive',
                 ]);
             }

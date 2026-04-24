@@ -639,12 +639,16 @@ h3, .h3 {
     opacity: 1;
 }
 
-.service .service-item .service-inner .service-title .service-content a h4 {
+.service .service-item .service-inner .service-title .service-content a h5 {
     border-bottom: 1px solid rgba(256, 256, 256, .1);
+    font-family: "Baskervville",sans-serif;
+    text-transform: uppercase;
+    padding: 0 1rem;
 }
 
 .service .service-item .service-inner .service-title .service-title-name {
     transition: 0.5s;
+    text-transform: uppercase;
 }
 
 .service .service-item:hover .service-inner .service-title .service-title-name {
@@ -993,4 +997,20 @@ h3, .h3 {
 
 .text-justify {
   text-align: justify !important;
+}
+.modal-header {
+    font-family: "Baskervville",sans-serif;
+    text-transform: uppercase;
+    color: #fff;
+}
+.modal-footer {
+    padding: .5rem;
+}
+.modal-body {
+    color: #433979;
+}
+@media (min-width: 768px) {
+    .modal-dialog {
+        max-width: 700px;
+    }
 }

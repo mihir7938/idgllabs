@@ -99,7 +99,6 @@
                     required: true
                 },
                 email: {
-                    required: true,
                     alphanumeric: true
                 },
                 phone: {
@@ -121,7 +120,6 @@
                     required: "Please enter name."
                 },
                 email:{
-                    required: "Please enter email.",
                     email: "Please provide a valid email."
                 },
                 phone:{
