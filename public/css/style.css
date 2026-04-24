@@ -623,7 +623,7 @@ h3, .h3 {
 
 .service .service-item .service-inner .service-title .service-content {
     position: absolute;
-    bottom: -100%; 
+    bottom: 0; 
     left: 0;
     margin-left: 30px;
     margin-right: 30px;
