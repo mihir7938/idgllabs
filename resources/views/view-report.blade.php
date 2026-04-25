@@ -115,6 +115,45 @@
     .print-body .right {
         width: calc(100% - 140px);
     }
+    .print-body .image {
+        width: 20%;
+    }
+    .gemstones .print-body .image {
+        width: 20%;
+        display: flex;
+        align-items: center;
+    }
+    .loosedi .print-body .image {
+        width: 20%;
+        display: flex;
+        align-items: center;
+    }
+    .print-body .image_hoz {
+        margin-top: 5px;
+        width: 40%;
+    }
+    .print-body .image_hoz img {
+        height: 85px;
+    }
+    .print-body .image_ver {
+        width: 18%;
+        display: flex;
+        align-items: center;
+    }
+    .print-body .image img,
+    .print-body .image_hoz img,
+    .print-body .image_ver img {
+        width: 100%;
+    }
+    .print-body .bottom {
+        width: 78%;
+    }
+    .print-body .bottom_hoz {
+        width: 58%;
+    }
+    .print-body .bottom_ver {
+        width: 80%;
+    }
     @media (max-width: 580px) {
         .print-header h4 {
             font-size: 16px;
