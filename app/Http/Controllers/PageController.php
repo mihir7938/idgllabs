@@ -69,7 +69,7 @@ class PageController extends Controller
         $contact->message = $request->message;
         $contact->save();
         $admin_email = env('ADMIN_EMAIL');
-        $subject = 'New Contact Submission';
+        $subject = 'New Contact Submission - IDGL';
         $result = [
             'name' => $request->name,
             'email_id' => $request->email_id,
