@@ -154,6 +154,15 @@
     .print-body .bottom_ver {
         width: 80%;
     }
+    .old-format {
+        color: #003a66;
+    }
+    .old-format .row {
+        margin-top: 10px;
+    }
+    .old-format label {
+        font-weight: bold;
+    }
     @media (max-width: 580px) {
         .print-header h4 {
             font-size: 16px;
@@ -189,6 +198,9 @@
         }
         .print-body .w-80 {
             width: 75%;
+        }
+        .old-format {
+            font-size: 14px;
         }
     }
 </style>
