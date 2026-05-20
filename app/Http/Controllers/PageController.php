@@ -132,6 +132,7 @@ class PageController extends Controller
         $data['mobile_no'] = $request->mobile_no;
         $data['email_id'] = $request->email_id;
         $data['address'] = $request->address;
+        $data['note_box'] = $request->note_box;
         $data['created_by'] = Auth::user()->id;
         $data['updated_by'] = 0;
         $this->clientService->create($data);
@@ -166,6 +167,7 @@ class PageController extends Controller
             $data['phone_no'] = $request->phone_no;
             $data['mobile_no'] = $request->mobile_no;
             $data['address'] = $request->address;
+            $data['note_box'] = $request->note_box;
             $data['email_id'] = $request->email_id;
             $data['updated_by'] = Auth::user()->id;
             $this->clientService->update($client, $data);

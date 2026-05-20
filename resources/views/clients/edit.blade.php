@@ -75,6 +75,12 @@
                                             <textarea class="form-control" id="address" name="address" rows="4" cols="50" placeholder="Address">{{$client->address}}</textarea>
                                         </div>
                                     </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="note_box">Note Box</label>
+                                            <input type="text" class="form-control" id="note_box" name="note_box" placeholder="Note Box" value="{{$client->note_box}}">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="card-footer">

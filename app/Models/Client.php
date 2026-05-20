@@ -25,6 +25,7 @@ class Client extends Model
         'mobile_no',
         'email_id',
         'address',
+        'note_box',
         'created_by',
         'updated_by',
     ];
