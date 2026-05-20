@@ -469,6 +469,7 @@
                 $('#description').val(desc);
                 $('#comment').val(comment);
                 $('#identification').val(identification);
+                $(form).find('button[type="submit"]').prop('disabled', true);
                 form.submit();
             }
         });
