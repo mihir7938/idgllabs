@@ -101,6 +101,7 @@
                     digits: true
                 },
                 mobile_no: {
+                    required: true,
                     digits: true,
                     minlength: 10,
                     maxlength: 10
@@ -115,6 +116,9 @@
                 },
                 client_name:{
                     required: "Please enter client name."
+                },
+                mobile_no:{
+                    required: "Please enter mobile number.",
                 },
                 email_id:{
                     email: "Please provide a valid email."

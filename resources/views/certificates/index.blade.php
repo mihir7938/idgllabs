@@ -105,13 +105,14 @@
                                     <thead>
                                         <tr>
                                             <th width="140">Action</th>
+                                            <th>#ID</th>
                                             <th>Name</th>
-                                            <th>Summary No.</th>
+                                            <th>Sum. No</th>
                                             <th>Date</th>
                                             <th>Company</th>
                                             <th>Client</th>
                                             <th>Total EST WT</th>
-                                            <th>Refractive Index</th>
+                                            <th>Ref Inx</th>
                                             <th>Status</th>
                                         </tr>
                                     </thead>
@@ -240,13 +241,14 @@
            order: [[9, 'desc']],
            columns: [
                 { data: 'action', orderable:false, searchable:false },
+                { data: 'id', name:'id' },
                 { data: 'user_name', name:'user_name' },
                 { data: 'summary_no', name:'summary_no' },
                 { data: 'certificate_date', name:'certificate_date' },
                 { data: 'company_name', name:'company_name' },
                 { data: 'name', name:'name' },
                 { data: 'weight', name:'weight' },
-                { data: 'refractive_index', name:'refractive_index' },
+                { data: 'refractive_index', name:'refractive_index', orderable:false },
                 { data: 'status', name:'status', orderable:false, searchable:false },
                 { data: 'created_at', name:'created_at', visible:false }
             ]

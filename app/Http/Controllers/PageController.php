@@ -193,6 +193,7 @@ class PageController extends Controller
                 'company_name',
                 'name',
                 'weight',
+                'total_weight',
                 'refractive_index',
                 'qr_code',
                 'status',
@@ -243,10 +244,10 @@ class PageController extends Controller
                             <a href="'.route('certificates.edit',$row->id).'" class="btn btn-outline-primary btn-circle">
                                 <i class="fas fa-pen"></i>
                             </a>
-                            <a href="'.asset('assets/'.$row->qr_code).'" class="btn btn-outline-danger btn-circle" download>
+                            <a href="'.asset('assets/'.$row->qr_code).'" class="btn btn-outline-warning btn-circle" download>
                                 <i class="fas fa-download"></i>
                             </a>
-                            <a href="'.route('certificates.duplicate',$row->id).'" class="btn btn-outline-warning btn-circle">
+                            <a href="'.route('certificates.duplicate',$row->id).'" class="btn btn-outline-danger btn-circle">
                                 <i class="fa fa-copy"></i>
                             </a></div>';
                     return $btn;
@@ -308,7 +309,7 @@ class PageController extends Controller
                     $row->certificate_date,
                     $row->company_name,
                     $row->name,
-                    $row->weight,
+                    $row->total_weight,
                     $row->refractive_index,
                     $row->status == 1 ? 'Active' : 'Inactive',
                 ]);

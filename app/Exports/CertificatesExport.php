@@ -39,7 +39,7 @@ class CertificatesExport implements FromGenerator, WithHeadings
                 \Carbon\Carbon::parse($row->certificate_date)->format('d-m-Y'),
                 $row->company_name,
                 $row->name,
-                $row->weight,
+                $row->total_weight,
                 $row->refractive_index,
                 $row->status == 1 ? 'Active' : 'Inactive',
             ];

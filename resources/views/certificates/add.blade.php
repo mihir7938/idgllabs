@@ -266,7 +266,10 @@
                     $('.note-editable').css({
                         'font-family': '"Source Sans Pro", Arial, sans-serif',
                         'font-size': '9px',
-                        'color': '#212529'
+                        'color': '#212529',
+                        "transform": 'scale(1.25)',
+                        "transform-origin": 'top left',
+                        "width": '80%'
                     });
                 }
             }
