@@ -15,16 +15,14 @@
                     </div>
                 </div>
             </div>
-            @if ($client->note_box)
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label>Note Box</label>
-                            <input type="text" class="form-control" name="note_box" value="{{ $client->note_box }}" disabled>
-                        </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label>Note Box</label>
+                        <input type="text" class="form-control border border-dark" name="note_box" value="{{ $client->note_box }}">
                     </div>
                 </div>
-            @endif
+            </div>
         </div>
         <div class="col-md-4">
             <div class="form-group">

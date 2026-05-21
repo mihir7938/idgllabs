@@ -375,6 +375,7 @@ class PageController extends Controller
         $data['gst_no'] = $request->gst_no;
         $data['name'] = $request->client_name;
         $data['address'] = $request->address;
+        $data['note_box'] = $request->note_box;
         $data['weight'] = $request->weight;
         $data['total_weight'] = $request->total_weight;
         $data['refractive_index'] = $request->refractive_index;
@@ -464,6 +465,7 @@ class PageController extends Controller
             $data['gst_no'] = $request->gst_no;
             $data['name'] = $request->client_name;
             $data['address'] = $request->address;
+            $data['note_box'] = $request->note_box;
             $data['weight'] = $request->weight;
             $data['total_weight'] = $request->total_weight;
             $data['refractive_index'] = $request->refractive_index;
