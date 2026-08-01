@@ -221,6 +221,11 @@
                                     <div class="left"><label>COMMENTS</label></div><span class="center">:</span><div class="right">{!! html_entity_decode($certificate->comment) !!}</div>
                                 </div>
                             @endif
+                            @if($certificate->origin)
+                                <div class="d-flex">
+                                    <div class="left"><label>Origin</label></div><span class="center">:</span><div class="right">{{ $certificate->origin }}</div>
+                                </div>
+                            @endif
                         </div>
                         <div class="{{ $image_class }}">
                             @if($certificate->image)
@@ -300,6 +305,11 @@
                             @if($certificate->comment)
                                 <div class="d-flex">
                                     <div class="left"><label>COMMENTS</label></div><span class="center">:</span><div class="right">{!! html_entity_decode($certificate->comment) !!}</div>
+                                </div>
+                            @endif
+                            @if($certificate->origin)
+                                <div class="d-flex">
+                                    <div class="left"><label>Origin</label></div><span class="center">:</span><div class="right">{{ $certificate->origin }}</div>
                                 </div>
                             @endif
                         </div>
@@ -391,6 +401,11 @@
                             @if($certificate->comment)
                                 <div class="d-flex">
                                     <div class="left"><label>COMMENTS</label></div><span class="center">:</span><div class="right">{!! html_entity_decode($certificate->comment) !!}</div>
+                                </div>
+                            @endif
+                            @if($certificate->origin)
+                                <div class="d-flex">
+                                    <div class="left"><label>Origin</label></div><span class="center">:</span><div class="right">{{ $certificate->origin }}</div>
                                 </div>
                             @endif
                         </div>
