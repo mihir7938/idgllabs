@@ -478,7 +478,11 @@
                                             <div class="left"><label>IDENTIFICATION</label></div><span class="center">:</span><div class="right">{!! html_entity_decode($certificate->identification) !!}</div>
                                         </div>
                                     @endif
-                                    @if($certificate->comment)
+                                    @if($certificate->origin)
+                                        <div class="d-flex">
+                                            <div class="left"><label>ORIGIN</label></div><span class="center">:</span><div class="right">{{ $certificate->origin }}</div>
+                                        </div>
+                                    @elseif($certificate->comment)
                                         <div class="d-flex">
                                             <div class="left"><label>COMMENTS</label></div><span class="center">:</span><div class="right small">{!! html_entity_decode($certificate->comment) !!}</div>
                                         </div>
